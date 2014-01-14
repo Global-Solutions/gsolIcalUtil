@@ -1,0 +1,9 @@
+jp.co.gsol.ical.data
+jp.co.gsol.ical.entity
+jp.co.gsol.ical.exception
+jp.co.gsol.ical.io
+jp.co.gsol.ical.logic
+jp.co.gsol.ical.model
+jp.co.gsol.ical.service
+jp.co.gsol.ical.service.extended
+jp.co.gsol.ical.settings

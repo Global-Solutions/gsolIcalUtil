@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="gsolIcalUtil">
+	<property file="build.properties"/>
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.7"/>
+    <property name="source" value="1.7"/>
+
+    <path id="gsolIcalUtil.classpath">
+        <pathelement location="target/classes"/>
+        <path>
+            <fileset dir="${INTRAMART_HOME}" includes="*.jar"/>
+        </path>
+        <pathelement location="${JAVAX_PERSISTENCE}"/>
+    </path>
+    <target name="init">
+        <mkdir dir="target/classes"/>
+        <mkdir dir="target/test-classes"/>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/main/java">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/main/resources">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="target/classes"/>
+    </target>
+    <target depends="init" name="compile">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" source="${source}" target="${target}" includeAntRuntime="false">
+            <src path="src/main/java"/>
+            <classpath refid="gsolIcalUtil.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" source="${source}" target="${target}" includeAntRuntime="false">
+            <src path="src/main/resources"/>
+            <classpath refid="gsolIcalUtil.classpath"/>
+        </javac>
+    </target>
+    <target depends="compile" name="jar">
+        <jar jarfile="target/gsol-ical-util.jar" basedir="target/classes"/>
+    </target>
+    <target depends="jar" name="build"/>
+</project>

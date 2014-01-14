@@ -1,0 +1,11 @@
+gsol ical util更新履歴
+
+ical util v2014.1.14
+================
+依存関係
+---------
+java 1.7
+ical4j v1.0.3
+intra-mart Accel Collaboration 2013 Winter
+
+initial commit.
