@@ -3,7 +3,7 @@ gsolIcalUtil
 
 ICalenddar utilities on intra-mart Accel Collaboration
 
-* Version 2014.1.14
+* Version 2016.7
 
 ## 概要
 intra-mart Accel Collaboration(以下、iAC)のカレンダーを読み取って、icsファイルに出力します。
@@ -37,14 +37,23 @@ intra-mart Accel Collaboration(以下、iAC)のカレンダーを読み取って
 * README.md
 
 ## 動作環境
-* intra-mart Accel Collaboration 2013 Winter
-* postgres v9.2, v9.3
-* JavaSE 1.7
+* intra-mart Accel Collaboration 2013 Winter or later
+* postgres v9.2, v9.3, v9.4
+* JavaSE 1.8
 
-## インストール
+## インストール (jarで出力する場合)
 1. build.propertiesのINTREMART_HOME(webapp directoryのlib)とJAVAX_PERSISTENCE(javax.persistencdの実装を含んだjar)を設定し、jarをコンパイル
 2. gsol-ical-util.jarをプロジェクトのビルドパスに追加
 3. main/conf/message/gsol/ical/ical-message.propertiesをプロジェクトの同じpathに配置
+4. main/resourcesにiCalSetting.jsonを設置・編集
+5. ical-ddl.sqlをiACスケジュールのDBに適用
+6. app.diconにs2jdbc.diconのincludeを追加
+7. jobとactionを作成。job schedulerの設定
+
+## インストール (immで出力する場合)
+1. module assembllyを設定し、ビルドパスを通す
+2. ユーザモジュールとしてエクスポート
+3. エクスポートしたユーザモジュールをプロジェクトに依存性に追加
 4. main/resourcesにiCalSetting.jsonを設置・編集
 5. ical-ddl.sqlをiACスケジュールのDBに適用
 6. app.diconにs2jdbc.diconのincludeを追加
