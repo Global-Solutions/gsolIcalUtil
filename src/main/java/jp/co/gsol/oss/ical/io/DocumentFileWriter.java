@@ -35,13 +35,15 @@ public class DocumentFileWriter {
     /**
      * ICalSettingの設定を使って、dirディレクトリに書き込むオブジェクトを作成します.
      * @param dir document directoryへのパス文字列
+     * @param autoMkdir directoryを自動作成するか
      * @throws NoSuchDirectoryException 指定のパスがディレクトリへの絶対パスではないとき
+     * @throws IOException ディレクトリ作成時
      */
-    public DocumentFileWriter(final String dir)
-            throws NoSuchDirectoryException {
+    public DocumentFileWriter(final String dir, final boolean autoMkdir)
+            throws NoSuchDirectoryException, IOException {
         this(dir,
             ICalSetting.tempFilePrefix(), ICalSetting.tempFileSuffix(),
-            Charset.forName(ICalSetting.charset()));
+            Charset.forName(ICalSetting.charset()), autoMkdir);
     }
 
     /**
@@ -50,17 +52,24 @@ public class DocumentFileWriter {
      * @param tempFilePrefix temporary file prefix
      * @param tempFileSuffix temporary file の拡張子
      * @param charset 書き込みに使う文字コード
+     * @param autoMkdir directoryを自動作成するか
      * @throws NoSuchDirectoryException 指定のパスがディレクトリへの絶対パスではないとき
+     * @throws IOException ディレクトリ作成時
      */
     public DocumentFileWriter(final String dir,
             final String tempFilePrefix, final String tempFileSuffix,
-            final Charset charset) throws NoSuchDirectoryException {
-        _dir = Paths.get(dir);
-        if (!_dir.isAbsolute() || !Files.isDirectory(_dir))
-            throw new NoSuchDirectoryException(
-                    "Argument dir needs abusolute path to document directory"
-                    + " dir: " + dir
-                    );
+            final Charset charset, final boolean autoMkdir)
+                    throws NoSuchDirectoryException, IOException {
+        Path d = Paths.get(dir);
+        if (!d.isAbsolute())
+            throw new IllegalArgumentException(dir + " is not abusolute path");
+        if (!Files.isDirectory(d)) {
+            if (autoMkdir) {
+                d = Files.createDirectory(d);
+            } else
+                throw new NoSuchDirectoryException(dir + " not found");
+        }
+        _dir = d;
         _tempFilePrefix = tempFilePrefix;
         _tempFileSuffix = tempFileSuffix;
         _charset = charset;
