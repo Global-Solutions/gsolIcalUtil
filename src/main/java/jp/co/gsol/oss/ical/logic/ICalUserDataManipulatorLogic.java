@@ -35,7 +35,7 @@ public class ICalUserDataManipulatorLogic {
         icsLogic = new IcsLogic(jdbcMan);
         try {
             iCalGeneratorLogic = new ICalGeneratorLogic(jdbcMan);
-        } catch (NoSuchDirectoryException e) {
+        } catch (NoSuchDirectoryException | IOException e) {
             throw new ICalException(e);
         }
     }
@@ -141,7 +141,7 @@ public class ICalUserDataManipulatorLogic {
     public final void deleteFile(final String fileName)
             throws IOException, ICalException {
        try {
-           new DocumentFileWriter(ICalSetting.documentDirectory())
+           new DocumentFileWriter(ICalSetting.documentDirectory(), ICalSetting.autoMkdir())
            .delete(fileName);
         } catch (NoFileNameException | DirectoryTraversalException | NoSuchDirectoryException e) {
             throw new ICalException(e);

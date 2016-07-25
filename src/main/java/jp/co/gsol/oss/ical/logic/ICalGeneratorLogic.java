@@ -32,20 +32,23 @@ public class ICalGeneratorLogic {
      * ICalSettingの設定を使って、icsファイルを書き込むオブジェクトを作成します.
      * @param jdbcMan 使用するJdbcManager
      * @throws NoSuchDirectoryException {@link DocumentFileWriter#DocumentFileWriter(String)}
+     * @throws IOException 
      */
     public ICalGeneratorLogic(final JdbcManager jdbcMan)
-            throws NoSuchDirectoryException {
-        this(ICalSetting.documentDirectory(), jdbcMan);
+            throws NoSuchDirectoryException, IOException {
+        this(ICalSetting.documentDirectory(), ICalSetting.autoMkdir(), jdbcMan);
     }
     /**
      * dir directoryにicsファイルを書き込むオブジェクトを作成します.
      * @param dir 指定するdirectoryへのパス文字列
+     * @param autoMkdir directoryがない時に、作成するか
      * @param jdbcMan 使用するJdbcManager
      * @throws NoSuchDirectoryException {@link DocumentFileWriter#DocumentFileWriter(String)}
+     * @throws IOException 
      */
-    public ICalGeneratorLogic(final String dir, final JdbcManager jdbcMan)
-            throws NoSuchDirectoryException {
-        writer = new DocumentFileWriter(dir);
+    public ICalGeneratorLogic(final String dir, final boolean autoMkdir, final JdbcManager jdbcMan)
+            throws NoSuchDirectoryException, IOException {
+        writer = new DocumentFileWriter(dir, autoMkdir);
         calendarReaderLogic = new CalendarReaderLogic(jdbcMan);
         icsLogic = new IcsLogic(jdbcMan);
     }

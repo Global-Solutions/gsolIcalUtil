@@ -10,5 +10,6 @@
     tempFilePrefix: null,
     tempFileSuffix: null,
     charset: "utf-8",
-    iacSchEventDatePattern: "yyyyMMdd"
+    iacSchEventDatePattern: "yyyyMMdd",
+    autoMkdir: true
 }

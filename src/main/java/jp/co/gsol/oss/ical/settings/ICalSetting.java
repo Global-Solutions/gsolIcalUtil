@@ -63,6 +63,8 @@ public final class ICalSetting {
     private static String charset = "utf-8";
     /** iac_sch_event テーブルの日付パターン文字列.*/
     private static String iacSchEventDatePattern = __UNDEFINED;
+    /** auto make dir.*/
+    private static Boolean autoMkdir = false;
 
     static {
         try {
@@ -188,6 +190,13 @@ public final class ICalSetting {
      */
     public static String iacSchEventDatePattern() {
         return iacSchEventDatePattern;
+    }
+    /**
+     * auto make dir.
+     * @return boolean autoMkdir
+     */
+    public static boolean autoMkdir() {
+        return autoMkdir;
     }
     /**
      * 設定ファイルをリロードする.
