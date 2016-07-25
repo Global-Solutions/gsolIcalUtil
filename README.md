@@ -15,7 +15,7 @@ intra-mart Accel Collaboration(以下、iAC)のカレンダーを読み取って
 * src
     * main
         * conf/message/gsol/ical : descriptionの生成に使用
-        * java/jp/co/gsol/ical
+        * java/jp/co/gsol/oss/ical
             * data : カレンダーの変換
             * entity
             * exception
@@ -27,7 +27,7 @@ intra-mart Accel Collaboration(以下、iAC)のカレンダーを読み取って
             * settings : 設定ファイル読み込み
         * resources
             * iCalSetting.json : 設定ファイル
-            * jp/co/gsol/ical/service/extended : SQL
+            * jp/co/gsol/oss/ical/service/extended : SQL
 * target/gsol-ical-util.jar
 * build.xml : jar生成用ビルドファイル
 * build.properties : ライブラリパス設定ファイル
