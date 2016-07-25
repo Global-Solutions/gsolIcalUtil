@@ -1,4 +1,4 @@
-package jp.co.gsol.ical.settings;
+package jp.co.gsol.oss.ical.settings;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.Map;
 
-import jp.co.gsol.ical.exception.ICalException;
+import jp.co.gsol.oss.ical.exception.ICalException;
 import jp.co.intra_mart.common.platform.log.Logger;
 
 import net.arnx.jsonic.JSON;

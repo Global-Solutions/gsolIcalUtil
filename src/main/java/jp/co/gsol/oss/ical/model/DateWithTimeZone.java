@@ -1,4 +1,4 @@
-package jp.co.gsol.ical.model;
+package jp.co.gsol.oss.ical.model;
 
 import net.fortuna.ical4j.model.Date;
 

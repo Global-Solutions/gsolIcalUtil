@@ -1,4 +1,4 @@
-package jp.co.gsol.ical.io;
+package jp.co.gsol.oss.ical.io;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -9,12 +9,12 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
 
-import jp.co.gsol.ical.data.CalendarConverter;
-import jp.co.gsol.ical.exception.DirectoryTraversalException;
-import jp.co.gsol.ical.exception.ICalException;
-import jp.co.gsol.ical.exception.NoFileNameException;
-import jp.co.gsol.ical.exception.NoSuchDirectoryException;
-import jp.co.gsol.ical.settings.ICalSetting;
+import jp.co.gsol.oss.ical.data.CalendarConverter;
+import jp.co.gsol.oss.ical.exception.DirectoryTraversalException;
+import jp.co.gsol.oss.ical.exception.ICalException;
+import jp.co.gsol.oss.ical.exception.NoFileNameException;
+import jp.co.gsol.oss.ical.exception.NoSuchDirectoryException;
+import jp.co.gsol.oss.ical.settings.ICalSetting;
 
 /**
  * Document directoryにファイルを書き込むクラスです.

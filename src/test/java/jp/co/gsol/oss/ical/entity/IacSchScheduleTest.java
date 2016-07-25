@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package jp.co.gsol.ical.entity;
+package jp.co.gsol.oss.ical.entity;
 
 import javax.annotation.Generated;
 import org.junit.runner.RunWith;
@@ -11,7 +11,7 @@ import org.seasar.extension.jdbc.JdbcManager;
 import org.seasar.framework.unit.Seasar2;
 import org.seasar.framework.unit.TestContext;
 
-import static jp.co.gsol.ical.entity.IacSchScheduleNames.*;
+import static jp.co.gsol.oss.ical.entity.IacSchScheduleNames.*;
 
 /**
  * {@link IacSchSchedule}のテストクラスです。

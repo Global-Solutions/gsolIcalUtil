@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package jp.co.gsol.ical;
+package jp.co.gsol.oss.ical;
 
 import java.io.InputStream;
 import java.io.Reader;

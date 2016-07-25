@@ -3,12 +3,12 @@
  * All rights reserved.
  */
 
-package jp.co.gsol.ical.entity;
+package jp.co.gsol.oss.ical.entity;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import javax.annotation.Generated;
-import jp.co.gsol.ical.entity.IacSchParticipantNames._IacSchParticipantNames;
+import jp.co.gsol.oss.ical.entity.IacSchParticipantNames._IacSchParticipantNames;
 import org.seasar.extension.jdbc.name.PropertyName;
 
 /**

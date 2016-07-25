@@ -3,13 +3,13 @@
  * All rights reserved.
  */
 
-package jp.co.gsol.ical.service;
+package jp.co.gsol.oss.ical.service;
 
 import java.util.List;
 import javax.annotation.Generated;
-import jp.co.gsol.ical.entity.IcalUserIcsRel;
+import jp.co.gsol.oss.ical.entity.IcalUserIcsRel;
 
-import static jp.co.gsol.ical.entity.IcalUserIcsRelNames.*;
+import static jp.co.gsol.oss.ical.entity.IcalUserIcsRelNames.*;
 import static org.seasar.extension.jdbc.operation.Operations.*;
 
 /**

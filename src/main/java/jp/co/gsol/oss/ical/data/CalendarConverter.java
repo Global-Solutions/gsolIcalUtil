@@ -1,4 +1,4 @@
-package jp.co.gsol.ical.data;
+package jp.co.gsol.oss.ical.data;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -30,10 +30,10 @@ import net.fortuna.ical4j.model.property.Uid;
 import net.fortuna.ical4j.model.property.Version;
 import net.fortuna.ical4j.model.property.XProperty;
 
-import jp.co.gsol.ical.exception.ICalException;
-import jp.co.gsol.ical.model.DateWithTimeZone;
-import jp.co.gsol.ical.model.ICalEvent;
-import jp.co.gsol.ical.model.ICalendar;
+import jp.co.gsol.oss.ical.exception.ICalException;
+import jp.co.gsol.oss.ical.model.DateWithTimeZone;
+import jp.co.gsol.oss.ical.model.ICalEvent;
+import jp.co.gsol.oss.ical.model.ICalendar;
 
 /**
  * {@link ICalendar}を{@link Calendar}に変換.

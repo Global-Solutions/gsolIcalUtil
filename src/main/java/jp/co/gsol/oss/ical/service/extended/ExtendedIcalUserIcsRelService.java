@@ -1,4 +1,4 @@
-package jp.co.gsol.ical.service.extended;
+package jp.co.gsol.oss.ical.service.extended;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -7,15 +7,15 @@ import java.util.List;
 import org.seasar.extension.jdbc.parameter.Parameter;
 import org.seasar.extension.jdbc.where.SimpleWhere;
 
-import jp.co.gsol.ical.entity.IcalUserIcsRel;
-import jp.co.gsol.ical.entity.Names;
+import jp.co.gsol.oss.ical.entity.IcalUserIcsRel;
+import jp.co.gsol.oss.ical.entity.Names;
 
 /**
  * icsファイルとユーザの関係を保存したテーブルのservice.
  * @author Global Solutions Co., Ltd.
  */
 public class ExtendedIcalUserIcsRelService
-extends jp.co.gsol.ical.service.IcalUserIcsRelService {
+extends jp.co.gsol.oss.ical.service.IcalUserIcsRelService {
     /**
      * すでに登録されているときは、更新する.
      * @param entity 更新するユーザとicsファイルの情報

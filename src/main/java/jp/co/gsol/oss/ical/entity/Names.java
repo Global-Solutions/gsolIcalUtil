@@ -3,15 +3,15 @@
  * All rights reserved.
  */
 
-package jp.co.gsol.ical.entity;
+package jp.co.gsol.oss.ical.entity;
 
 import javax.annotation.Generated;
-import jp.co.gsol.ical.entity.IacSchEventNames._IacSchEventNames;
-import jp.co.gsol.ical.entity.IacSchEventParticipantNames._IacSchEventParticipantNames;
-import jp.co.gsol.ical.entity.IacSchParticipantNames._IacSchParticipantNames;
-import jp.co.gsol.ical.entity.IacSchScheduleNames._IacSchScheduleNames;
-import jp.co.gsol.ical.entity.IcalUpdateQueueNames._IcalUpdateQueueNames;
-import jp.co.gsol.ical.entity.IcalUserIcsRelNames._IcalUserIcsRelNames;
+import jp.co.gsol.oss.ical.entity.IacSchEventNames._IacSchEventNames;
+import jp.co.gsol.oss.ical.entity.IacSchEventParticipantNames._IacSchEventParticipantNames;
+import jp.co.gsol.oss.ical.entity.IacSchParticipantNames._IacSchParticipantNames;
+import jp.co.gsol.oss.ical.entity.IacSchScheduleNames._IacSchScheduleNames;
+import jp.co.gsol.oss.ical.entity.IcalUpdateQueueNames._IcalUpdateQueueNames;
+import jp.co.gsol.oss.ical.entity.IcalUserIcsRelNames._IcalUserIcsRelNames;
 
 /**
  * 名前クラスの集約です。

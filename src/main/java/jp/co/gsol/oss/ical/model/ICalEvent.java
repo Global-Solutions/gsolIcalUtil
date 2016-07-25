@@ -1,8 +1,8 @@
-package jp.co.gsol.ical.model;
+package jp.co.gsol.oss.ical.model;
 
 import java.util.EnumSet;
 
-import jp.co.gsol.ical.exception.ICalException;
+import jp.co.gsol.oss.ical.exception.ICalException;
 import jp.co.intra_mart.foundation.i18n.datetime.DateTime;
 
 /**

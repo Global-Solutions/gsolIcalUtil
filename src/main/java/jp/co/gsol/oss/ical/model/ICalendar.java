@@ -1,4 +1,4 @@
-package jp.co.gsol.ical.model;
+package jp.co.gsol.oss.ical.model;
 
 import java.util.List;
 import java.util.TimeZone;

@@ -1,13 +1,13 @@
-package jp.co.gsol.ical.logic;
+package jp.co.gsol.oss.ical.logic;
 
 import org.openide.util.MapFormat;
 import org.seasar.extension.jdbc.JdbcManager;
 
 import com.google.common.collect.ImmutableMap;
 
-import jp.co.gsol.ical.exception.ICalException;
-import jp.co.gsol.ical.model.ICalendar;
-import jp.co.gsol.ical.settings.ICalSetting;
+import jp.co.gsol.oss.ical.exception.ICalException;
+import jp.co.gsol.oss.ical.model.ICalendar;
+import jp.co.gsol.oss.ical.settings.ICalSetting;
 import jp.co.intra_mart.foundation.exception.BizApiException;
 import jp.co.intra_mart.foundation.i18n.datetime.DateTime;
 import jp.co.intra_mart.foundation.master.user.UserManager;

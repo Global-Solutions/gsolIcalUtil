@@ -3,4 +3,4 @@
  * @author Global Solutions Co., Ltd.
  */
 
-package jp.co.gsol.ical.logic;
+package jp.co.gsol.oss.ical.logic;

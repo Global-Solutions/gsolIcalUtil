@@ -1,11 +1,11 @@
-package jp.co.gsol.ical.service.extended;
+package jp.co.gsol.oss.ical.service.extended;
 
 import java.util.List;
 
 import org.seasar.extension.jdbc.parameter.Parameter;
 
-import jp.co.gsol.ical.entity.IacSchSchedule;
-import jp.co.gsol.ical.entity.Names;
+import jp.co.gsol.oss.ical.entity.IacSchSchedule;
+import jp.co.gsol.oss.ical.entity.Names;
 import jp.co.intra_mart.foundation.i18n.datetime.DateTime;
 
 /**
@@ -13,7 +13,7 @@ import jp.co.intra_mart.foundation.i18n.datetime.DateTime;
  * @author Global Solutions Co., Ltd.
  */
 public class ExtendedIacSchScheduleService extends
-        jp.co.gsol.ical.service.IacSchScheduleService {
+        jp.co.gsol.oss.ical.service.IacSchScheduleService {
 
     /**
      * ユーザの期間内のスケジュールを検索します.

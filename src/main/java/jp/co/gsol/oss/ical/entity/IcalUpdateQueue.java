@@ -2,7 +2,7 @@
  * Copyright 2013-2014 Global Solutions Co., Ltd.
  * All rights reserved.
  */
-package jp.co.gsol.ical.entity;
+package jp.co.gsol.oss.ical.entity;
 
 import java.io.Serializable;
 import java.sql.Timestamp;

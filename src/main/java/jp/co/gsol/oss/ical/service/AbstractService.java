@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package jp.co.gsol.ical.service;
+package jp.co.gsol.oss.ical.service;
 
 import javax.annotation.Generated;
 import org.seasar.extension.jdbc.service.S2AbstractService;

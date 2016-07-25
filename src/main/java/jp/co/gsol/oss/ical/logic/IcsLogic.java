@@ -1,4 +1,4 @@
-package jp.co.gsol.ical.logic;
+package jp.co.gsol.oss.ical.logic;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.seasar.extension.jdbc.JdbcManager;
 
-import jp.co.gsol.ical.entity.IcalUserIcsRel;
-import jp.co.gsol.ical.service.extended.ExtendedIcalUserIcsRelService;
+import jp.co.gsol.oss.ical.entity.IcalUserIcsRel;
+import jp.co.gsol.oss.ical.service.extended.ExtendedIcalUserIcsRelService;
 
 /**
  * icsファイル関連の操作.

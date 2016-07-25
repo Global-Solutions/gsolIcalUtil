@@ -1,4 +1,4 @@
-package jp.co.gsol.ical.logic;
+package jp.co.gsol.oss.ical.logic;
 
 import java.io.IOException;
 import java.util.Date;
@@ -6,13 +6,13 @@ import java.util.List;
 
 import org.seasar.extension.jdbc.JdbcManager;
 
-import jp.co.gsol.ical.data.CalendarConverter;
-import jp.co.gsol.ical.entity.IcalUserIcsRel;
-import jp.co.gsol.ical.exception.DirectoryTraversalException;
-import jp.co.gsol.ical.exception.ICalException;
-import jp.co.gsol.ical.exception.NoSuchDirectoryException;
-import jp.co.gsol.ical.io.DocumentFileWriter;
-import jp.co.gsol.ical.settings.ICalSetting;
+import jp.co.gsol.oss.ical.data.CalendarConverter;
+import jp.co.gsol.oss.ical.entity.IcalUserIcsRel;
+import jp.co.gsol.oss.ical.exception.DirectoryTraversalException;
+import jp.co.gsol.oss.ical.exception.ICalException;
+import jp.co.gsol.oss.ical.exception.NoSuchDirectoryException;
+import jp.co.gsol.oss.ical.io.DocumentFileWriter;
+import jp.co.gsol.oss.ical.settings.ICalSetting;
 import jp.co.intra_mart.foundation.i18n.datetime.DateTime;
 
 /**

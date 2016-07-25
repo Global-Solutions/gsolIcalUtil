@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package jp.co.gsol.ical.entity;
+package jp.co.gsol.oss.ical.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

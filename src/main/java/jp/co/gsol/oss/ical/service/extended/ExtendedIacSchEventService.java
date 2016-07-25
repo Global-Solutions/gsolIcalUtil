@@ -1,18 +1,18 @@
-package jp.co.gsol.ical.service.extended;
+package jp.co.gsol.oss.ical.service.extended;
 
 import java.util.List;
 
 import org.seasar.extension.jdbc.parameter.Parameter;
 
-import jp.co.gsol.ical.entity.IacSchEvent;
-import jp.co.gsol.ical.entity.Names;
+import jp.co.gsol.oss.ical.entity.IacSchEvent;
+import jp.co.gsol.oss.ical.entity.Names;
 
 /**
  * iACのイベントテーブルのServiceクラスです.
  *  @author Global Solutions Co., Ltd.
  */
 public class ExtendedIacSchEventService extends
-        jp.co.gsol.ical.service.IacSchEventService {
+        jp.co.gsol.oss.ical.service.IacSchEventService {
 
     /**
      * ユーザの期間内のイベントを検索します.

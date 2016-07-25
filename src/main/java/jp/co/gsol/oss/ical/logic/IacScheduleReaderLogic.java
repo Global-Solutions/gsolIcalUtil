@@ -1,4 +1,4 @@
-package jp.co.gsol.ical.logic;
+package jp.co.gsol.oss.ical.logic;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -13,13 +13,13 @@ import org.openide.util.MapFormat;
 import org.seasar.extension.jdbc.JdbcManager;
 import org.seasar.util.lang.StringUtil;
 
-import jp.co.gsol.ical.entity.IacSchEvent;
-import jp.co.gsol.ical.entity.IacSchSchedule;
-import jp.co.gsol.ical.exception.ICalException;
-import jp.co.gsol.ical.model.ICalEvent;
-import jp.co.gsol.ical.service.extended.ExtendedIacSchEventService;
-import jp.co.gsol.ical.service.extended.ExtendedIacSchScheduleService;
-import jp.co.gsol.ical.settings.ICalSetting;
+import jp.co.gsol.oss.ical.entity.IacSchEvent;
+import jp.co.gsol.oss.ical.entity.IacSchSchedule;
+import jp.co.gsol.oss.ical.exception.ICalException;
+import jp.co.gsol.oss.ical.model.ICalEvent;
+import jp.co.gsol.oss.ical.service.extended.ExtendedIacSchEventService;
+import jp.co.gsol.oss.ical.service.extended.ExtendedIacSchScheduleService;
+import jp.co.gsol.oss.ical.settings.ICalSetting;
 import jp.co.intra_mart.foundation.i18n.datetime.DateTime;
 import jp.co.intra_mart.foundation.security.exception.AccessSecurityException;
 import jp.co.intra_mart.foundation.security.message.MessageManager;

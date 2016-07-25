@@ -1,4 +1,4 @@
-package jp.co.gsol.ical.exception;
+package jp.co.gsol.oss.ical.exception;
 
 /**
  * icsファイルを作成中に発生した例外.
