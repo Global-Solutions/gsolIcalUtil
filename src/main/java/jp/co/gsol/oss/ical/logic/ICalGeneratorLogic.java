@@ -102,41 +102,45 @@ public class ICalGeneratorLogic {
      * icsファイルをまとめて更新 (設定ファイルで指定された期間のスケジュールを出力).
      * @param icsRels ics 更新対象のユーザとicsファイルの情報
      * @param refDate ユーザ情報参照基準日
+     * @return 更新件数
      * @throws IOException {@link DocumentFileWriter#write(String, CalendarConverter)}
      * @throws ICalException {@link DocumentFileWriter#write(String, CalendarConverter)}
      * または、 {@link CalendarReaderLogic#read(String, DateTime, DateTime, DateTime)}
      * または、ディレクトリトラバーサルする可能性があるとき
      */
-    public final void writeBatch(
+    public final int writeBatch(
             final List<IcalUserIcsRel> icsRels, final DateTime refDate)
             throws IOException, ICalException {
         for (IcalUserIcsRel ics: icsRels)
             write(ics.icsName, ics.userCd, refDate);
+        return icsRels.size();
     }
     /**
      * スケジュールが更新されたicsファイルをまとめて更新 (設定ファイルで指定された期間のスケジュールを出力).
      * @param lastUpdateDate 前回の実行日時
      * @param refDate ユーザ情報参照基準日
+     * @return 更新件数
      * @throws IOException {@link DocumentFileWriter#write(String, CalendarConverter)}
      * @throws ICalException {@link DocumentFileWriter#write(String, CalendarConverter)}
      * または、 {@link CalendarReaderLogic#read(String, DateTime, DateTime, DateTime)}
      * または、ディレクトリトラバーサルする可能性があるとき
      */
-    public final void writeBatchUpdatedSchedulesNoRecovery(
+    public final int writeBatchUpdatedSchedulesNoRecovery(
             final Date lastUpdateDate, final DateTime refDate)
             throws IOException, ICalException {
-        writeBatch(icsLogic.findAllCandToBeUpdated(lastUpdateDate), refDate);
+        return writeBatch(icsLogic.findAllCandToBeUpdated(lastUpdateDate), refDate);
     }
     /**
      * スケジュールが更新されたicsファイルをまとめて更新 (設定ファイルで指定された期間のスケジュールを出力).
      * @param lastUpdateDate 前回の実行日時
      * @param refDate ユーザ情報参照基準日
+     * @return 更新件数
      * @throws IOException {@link DocumentFileWriter#write(String, CalendarConverter)}
      * @throws ICalException {@link DocumentFileWriter#write(String, CalendarConverter)}
      * または、 {@link CalendarReaderLogic#read(String, DateTime, DateTime, DateTime)}
      * または、ディレクトリトラバーサルする可能性があるとき
      */
-    public final void writeBatchUpdatedSchedulesAutoRecovery(
+    public final int writeBatchUpdatedSchedulesAutoRecovery(
             final Date lastUpdateDate, final DateTime refDate)
             throws IOException, ICalException {
         final List<IcalUserIcsRel> allRels = icsLogic.findAll();
@@ -146,7 +150,7 @@ public class ICalGeneratorLogic {
         final List<String> files = writer.ls();
         final Stream<IcalUserIcsRel> missingFiles =
                 allRels.stream().filter(r -> !files.contains(r.icsName));
-        writeBatch(Stream.concat(
+        return writeBatch(Stream.concat(
                 lastUpdateDate == null ? allRels.stream():
                     allRels.stream().filter(r -> updatedUserCds.contains(r.userCd)),
                 missingFiles
@@ -157,32 +161,34 @@ public class ICalGeneratorLogic {
      * @param lastUpdateDate 前回の実行日時
      * @param refDate ユーザ情報参照基準日
      * @param autoRecovery 存在しないファイルを自動回復するか
+     * @return 更新件数
      * @throws IOException {@link DocumentFileWriter#write(String, CalendarConverter)}
      * @throws ICalException {@link DocumentFileWriter#write(String, CalendarConverter)}
      * または、 {@link CalendarReaderLogic#read(String, DateTime, DateTime, DateTime)}
      * または、ディレクトリトラバーサルする可能性があるとき
      */
-    public final void writeBatchUpdatedSchedules(
+    public final int writeBatchUpdatedSchedules(
             final Date lastUpdateDate, final DateTime refDate,
             final boolean autoRecovery)
             throws IOException, ICalException {
         if (autoRecovery)
-            writeBatchUpdatedSchedulesAutoRecovery(lastUpdateDate, refDate);
+            return writeBatchUpdatedSchedulesAutoRecovery(lastUpdateDate, refDate);
         else
-            writeBatchUpdatedSchedulesNoRecovery(lastUpdateDate, refDate);
+            return writeBatchUpdatedSchedulesNoRecovery(lastUpdateDate, refDate);
     }
     /**
      * スケジュールが更新されたicsファイルをまとめて更新 (設定ファイルで指定された期間のスケジュールを出力).
      * @param lastUpdateDate 前回の実行日時
      * @param refDate ユーザ情報参照基準日
+     * @return 更新件数
      * @throws IOException {@link DocumentFileWriter#write(String, CalendarConverter)}
      * @throws ICalException {@link DocumentFileWriter#write(String, CalendarConverter)}
      * または、 {@link CalendarReaderLogic#read(String, DateTime, DateTime, DateTime)}
      * または、ディレクトリトラバーサルする可能性があるとき
      */
-    public final void writeBatchUpdatedSchedules(
+    public final int writeBatchUpdatedSchedules(
             final Date lastUpdateDate, final DateTime refDate)
             throws IOException, ICalException {
-        writeBatchUpdatedSchedules(lastUpdateDate, refDate, ICalSetting.autoRecovery());
+        return writeBatchUpdatedSchedules(lastUpdateDate, refDate, ICalSetting.autoRecovery());
     }
 }
