@@ -3,10 +3,13 @@ package jp.co.gsol.oss.ical.logic;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.seasar.extension.jdbc.JdbcManager;
 
 import jp.co.gsol.oss.ical.entity.IcalUserIcsRel;
+import jp.co.gsol.oss.ical.service.extended.ExtendedIcalUpdateQueueService;
 import jp.co.gsol.oss.ical.service.extended.ExtendedIcalUserIcsRelService;
 
 /**
@@ -17,6 +20,8 @@ public class IcsLogic {
 
     /** ical_user_ics_rel テーブル service.*/
     private ExtendedIcalUserIcsRelService extendedIcalUserIcsRelService;
+    /** ical_user_ics_rel テーブル service.*/
+    private ExtendedIcalUpdateQueueService extendedIcalUpdateQueueService;
 
     /**
      * JdbcManagerを指定する.
@@ -24,6 +29,9 @@ public class IcsLogic {
      */
     public IcsLogic(final JdbcManager jdbcMan) {
         extendedIcalUserIcsRelService = new ExtendedIcalUserIcsRelService() {
+            { this.jdbcManager = jdbcMan; }
+        };
+        extendedIcalUpdateQueueService = new ExtendedIcalUpdateQueueService() {
             { this.jdbcManager = jdbcMan; }
         };
     }
@@ -37,6 +45,28 @@ public class IcsLogic {
         if (lastUpdateDate == null)
             return extendedIcalUserIcsRelService.findAll();
         return extendedIcalUserIcsRelService.findAllLaterThan(lastUpdateDate);
+    }
+    /**
+     * 指定日時後に更新されたのuserCdを取得
+     * @param lastUpdateDate nullの場合は、空
+     * @return 更新されたuserCd
+     */
+    public final Stream<String>
+    findAllUserCdStreamToBeUpdated(final Date lastUpdateDate) {
+        if (lastUpdateDate == null)
+            return Stream.empty();
+        return extendedIcalUpdateQueueService.findAllLaterThan(lastUpdateDate)
+                .stream().map(q -> q.userCd);
+    }
+    /**
+     * 指定日時後に更新されたのuserCdを取得
+     * @param lastUpdateDate nullの場合は、空
+     * @return 更新されたuserCd
+     */
+    public final List<String>
+    findAllUserCdToBeUpdated(final Date lastUpdateDate) {
+        return findAllUserCdStreamToBeUpdated(lastUpdateDate)
+                .collect(Collectors.toList());
     }
     /**
      * ユーザとicsファイルの関連を登録か更新する.
