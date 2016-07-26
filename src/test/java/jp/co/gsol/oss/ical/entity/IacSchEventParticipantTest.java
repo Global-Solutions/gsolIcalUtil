@@ -11,7 +11,7 @@ import org.seasar.extension.jdbc.JdbcManager;
 import org.seasar.framework.unit.Seasar2;
 import org.seasar.framework.unit.TestContext;
 
-import static jp.co.gsol.ical.entity.IacSchEventParticipantNames.*;
+import static jp.co.gsol.oss.ical.entity.IacSchEventParticipantNames.*;
 
 /**
  * {@link IacSchEventParticipant}のテストクラスです。
