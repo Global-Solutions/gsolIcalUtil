@@ -65,6 +65,8 @@ public final class ICalSetting {
     private static String iacSchEventDatePattern = __UNDEFINED;
     /** auto make dir.*/
     private static Boolean autoMkdir = false;
+    /** auto recovery file.*/
+    private static Boolean autoRecovery = false;
 
     static {
         try {
@@ -197,6 +199,13 @@ public final class ICalSetting {
      */
     public static boolean autoMkdir() {
         return autoMkdir;
+    }
+    /**
+     * auto recovery file.
+     * @return boolean autoRecovery
+     */
+    public static boolean autoRecovery() {
+        return autoRecovery;
     }
     /**
      * 設定ファイルをリロードする.

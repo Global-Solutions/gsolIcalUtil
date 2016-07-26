@@ -8,6 +8,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import jp.co.gsol.oss.ical.data.CalendarConverter;
 import jp.co.gsol.oss.ical.exception.DirectoryTraversalException;
@@ -111,6 +114,41 @@ public class DocumentFileWriter {
                     "It is not allowed to access parent directry!"
                     + " Absolute path:" + path.toAbsolutePath()
                     + " Canonical path:" + path.normalize());
+    }
+    /**
+     * 書き込み先directoryのファイルの一覧を取得.
+     * @return ファイル一覧のList
+     * @throws IOException {@link java.nio.file.Files#list(Path)}
+     */
+    public final List<String> ls() throws IOException {
+        return ls(_dir);
+    }
+    /**
+     * 書き込み先directoryのファイルの一覧を取得.
+     * @return ファイル一覧のStream
+     * @throws IOException {@link java.nio.file.Files#list(Path)}
+     */
+    public final Stream<String> lsStream() throws IOException {
+        return lsStream(_dir);
+    }
+    /**
+     * ファイルの一覧を取得.
+     * @param dir 一覧を取得するディレクトリ
+     * @return ファイル一覧のList
+     * @throws IOException {@link java.nio.file.Files#list(Path)}
+     */
+    public static final List<String> ls(final Path dir) throws IOException {
+        return lsStream(dir).collect(Collectors.toList());
+    }
+    /**
+     * ファイルの一覧を取得.
+     * @param dir 一覧を取得するディレクトリ
+     * @return ファイル一覧のStream
+     * @throws IOException {@link java.nio.file.Files#list(Path)}
+     */
+    public static final Stream<String> lsStream(final Path dir)
+            throws IOException {
+        return Files.list(dir).map(p -> p.toFile().getName());
     }
     /**
      * ファイルを削除します.
