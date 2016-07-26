@@ -3,6 +3,8 @@ package jp.co.gsol.oss.ical.logic;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.seasar.extension.jdbc.JdbcManager;
 
@@ -137,7 +139,18 @@ public class ICalGeneratorLogic {
     public final void writeBatchUpdatedSchedulesAutoRecovery(
             final Date lastUpdateDate, final DateTime refDate)
             throws IOException, ICalException {
-        writeBatch(icsLogic.findAllCandToBeUpdated(lastUpdateDate), refDate);
+        final List<IcalUserIcsRel> allRels = icsLogic.findAll();
+
+        final List<String> updatedUserCds =
+                icsLogic.findAllUserCdToBeUpdated(lastUpdateDate);
+        final List<String> files = writer.ls();
+        final Stream<IcalUserIcsRel> missingFiles =
+                allRels.stream().filter(r -> !files.contains(r.icsName));
+        writeBatch(Stream.concat(
+                lastUpdateDate == null ? allRels.stream():
+                    allRels.stream().filter(r -> updatedUserCds.contains(r.userCd)),
+                missingFiles
+        ).distinct().collect(Collectors.toList()), refDate);
     }
     /**
      * スケジュールが更新されたicsファイルをまとめて更新 (設定ファイルで指定された期間のスケジュールを出力).
