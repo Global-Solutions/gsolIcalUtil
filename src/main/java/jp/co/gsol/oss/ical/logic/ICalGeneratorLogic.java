@@ -183,6 +183,6 @@ public class ICalGeneratorLogic {
     public final void writeBatchUpdatedSchedules(
             final Date lastUpdateDate, final DateTime refDate)
             throws IOException, ICalException {
-        writeBatchUpdatedSchedules(lastUpdateDate, refDate, false);
+        writeBatchUpdatedSchedules(lastUpdateDate, refDate, ICalSetting.autoRecovery());
     }
 }
