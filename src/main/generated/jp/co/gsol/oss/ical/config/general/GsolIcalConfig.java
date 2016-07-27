@@ -19,8 +19,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;all>
- *         &lt;element name="document-directry" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="location-path" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="document-directry" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="webserver-root-directry" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="location-path" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="prod-id" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="calendar-name-template" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="auto-mkdir" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -48,9 +49,11 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "gsol-ical-config", namespace = "http://global-solutions.co.jp/ical/config/general")
 public class GsolIcalConfig {
 
-    @XmlElement(name = "document-directry", namespace = "http://global-solutions.co.jp/ical/config/general", required = true)
+    @XmlElement(name = "document-directry", namespace = "http://global-solutions.co.jp/ical/config/general")
     protected String documentDirectry;
-    @XmlElement(name = "location-path", namespace = "http://global-solutions.co.jp/ical/config/general", required = true)
+    @XmlElement(name = "webserver-root-directry", namespace = "http://global-solutions.co.jp/ical/config/general")
+    protected String webserverRootDirectry;
+    @XmlElement(name = "location-path", namespace = "http://global-solutions.co.jp/ical/config/general")
     protected String locationPath;
     @XmlElement(name = "prod-id", namespace = "http://global-solutions.co.jp/ical/config/general", required = true)
     protected String prodId;
@@ -99,6 +102,30 @@ public class GsolIcalConfig {
      */
     public void setDocumentDirectry(String value) {
         this.documentDirectry = value;
+    }
+
+    /**
+     * webserverRootDirectryプロパティの値を取得します。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getWebserverRootDirectry() {
+        return webserverRootDirectry;
+    }
+
+    /**
+     * webserverRootDirectryプロパティの値を設定します。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setWebserverRootDirectry(String value) {
+        this.webserverRootDirectry = value;
     }
 
     /**
