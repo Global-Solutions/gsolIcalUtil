@@ -8,10 +8,6 @@
   <description>${module.description}</description>
   <dependencies>
     <dependency>
-      <module-id>jp.co.intra_mart.vendor.jsonic</module-id>
-      <verified-version>1.2.11</verified-version>
-    </dependency>
-    <dependency>
     	<module-id>jp.co.intra_mart.vendor.ical4j</module-id>
     	<verified-version min="1.0.3">1.0.3</verified-version>
     </dependency>
