@@ -36,6 +36,14 @@ public class IcsLogic {
         };
     }
     /**
+     * userCdとicsファイル名の関連を全件取得.
+     * @return userCdとicsファイル名の関連
+     */
+    public final List<IcalUserIcsRel>
+    findAll() {
+        return extendedIcalUserIcsRelService.findAll();
+    }
+    /**
      * 指定日時後に更新されたのuserCdとicsファイル名を取得.
      * @param lastUpdateDate nullの場合は、全件取得
      * @return 更新対象候補
@@ -43,7 +51,7 @@ public class IcsLogic {
     public final List<IcalUserIcsRel>
     findAllCandToBeUpdated(final Date lastUpdateDate) {
         if (lastUpdateDate == null)
-            return extendedIcalUserIcsRelService.findAll();
+            return findAll();
         return extendedIcalUserIcsRelService.findAllLaterThan(lastUpdateDate);
     }
     /**
