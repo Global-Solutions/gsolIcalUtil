@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://global-solutions.co.jp/ical/config/general"
+    elementFormDefault="qualified"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="http://global-solutions.co.jp/ical/config/general"
+    xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    jaxb:version="2.0">
+    <annotation>
+        <appinfo>
+            <jaxb:schemaBindings>
+                <jaxb:package name="jp.co.gsol.oss.ical.config.general"/>
+            </jaxb:schemaBindings>
+        </appinfo>
+    </annotation>
+    <element name="gsol-ical-config">
+        <complexType>
+            <all>
+                <element name="document-directry" minOccurs="0" maxOccurs="1" type="string"/>
+                <element name="webserver-root-directry" minOccurs="0" maxOccurs="1" type="string"/>
+                <element name="location-path" minOccurs="0" maxOccurs="1" type="string"/>
+                <element name="prod-id" minOccurs="1" maxOccurs="1" type="string"/>
+                <element name="calendar-name-template" minOccurs="1" maxOccurs="1" type="string"/>
+                <element name="auto-mkdir" type="boolean" minOccurs="0" maxOccurs="1" />
+                <element name="auto-recovery-file" type="boolean" minOccurs="0" maxOccurs="1"/>
+                <element name="ics-start-month" type="tns:negative-integer" minOccurs="0" maxOccurs="1"/>
+                <element name="ics-end-month" type="tns:positive-integer" minOccurs="0" maxOccurs="1"/>
+                <element name="ics-filename-len" type="tns:positive-integer" minOccurs="0" maxOccurs="1"/>
+                <element name="ics-file-extension" type="string" minOccurs="0" maxOccurs="1"/>
+                <element name="temp-file-prefix" type="string" minOccurs="0" maxOccurs="1"/>
+                <element name="temp-file-suffix" type="string" minOccurs="0" maxOccurs="1"/>
+                <element name="charset" type="string" minOccurs="0" maxOccurs="1"/>
+                <element name="iac-sch-event-date-pattern" type="string" minOccurs="0" maxOccurs="1"/>
+            </all>
+        </complexType>
+    </element>
+    <simpleType name="positive-integer">
+        <restriction base="integer">
+            <minInclusive value="0"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="negative-integer">
+        <restriction base="integer">
+            <maxInclusive value="0"/>
+        </restriction>
+    </simpleType>
+</schema>
