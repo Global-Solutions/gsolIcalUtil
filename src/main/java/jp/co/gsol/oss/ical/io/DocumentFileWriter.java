@@ -62,19 +62,32 @@ public class DocumentFileWriter {
             final String tempFilePrefix, final String tempFileSuffix,
             final Charset charset, final boolean autoMkdir)
                     throws NoSuchDirectoryException, IOException {
+
         Path d = Paths.get(dir);
-        if (!d.isAbsolute())
-            throw new IllegalArgumentException(dir + " is not abusolute path");
-        if (!Files.isDirectory(d)) {
-            if (autoMkdir) {
+        try {
+            d = getCanonicalPath(dir);
+        } catch (final NoSuchDirectoryException e) {
+            if (autoMkdir)
                 d = Files.createDirectory(d);
-            } else
-                throw new NoSuchDirectoryException(dir + " not found");
+            else
+                throw e;
         }
         _dir = d;
         _tempFilePrefix = tempFilePrefix;
         _tempFileSuffix = tempFileSuffix;
         _charset = charset;
+    }
+    private static final Path getCanonicalPath(final Path dir)
+            throws NoSuchDirectoryException {
+        if (!dir.isAbsolute())
+            throw new IllegalArgumentException(dir + " is not abusolute path");
+        if (!Files.isDirectory(dir))
+            throw new NoSuchDirectoryException(dir + " not found");
+        return dir;
+    }
+    private static final Path getCanonicalPath(final String dir)
+            throws NoSuchDirectoryException {
+        return getCanonicalPath(Paths.get(dir));
     }
     /**
      * ConvertCalendarLogicを使ってファイルに書き込みます.
@@ -95,7 +108,7 @@ public class DocumentFileWriter {
         try (BufferedWriter bw = Files.newBufferedWriter(tempFile,
                 _charset, StandardOpenOption.CREATE)) {
             iCal.write(bw);
-        } catch (Exception e) {
+        } catch (final Exception e) {
             Files.deleteIfExists(tempFile);
             throw e;
         }
@@ -106,7 +119,7 @@ public class DocumentFileWriter {
      * @param path 確認するPath(絶対パスで指定)
      * @throws DirectoryTraversalException Pathの絶対パスと正規化パスが一致しないとき
      */
-    public static void validTraverse(final Path path)
+    public static final void validTraverse(final Path path)
             throws DirectoryTraversalException {
         if (!path.toAbsolutePath().equals(path.normalize()))
             throw new DirectoryTraversalException(
@@ -158,11 +171,34 @@ public class DocumentFileWriter {
      */
     public final void delete(final String filename)
             throws IOException, NoFileNameException, DirectoryTraversalException {
+        delete(_dir, filename);
+    }
+    /**
+     * ファイルを削除します.
+     * @param filename 削除するファイル名
+     * @throws IOException {@link java.nio.file.Files#deleteIfExists(Path)}
+     * @throws NoFileNameException ファイル名がnullのとき
+     * @throws DirectoryTraversalException {@link #validTraverse(Path)}
+     */
+    public static final void delete(final Path dir, final String filename)
+            throws IOException, NoFileNameException, DirectoryTraversalException {
         if (filename == null)
             throw new NoFileNameException("filename is required.");
 
-        final Path file = _dir.resolve(filename);
+        final Path file = dir.resolve(filename);
         validTraverse(file);
         Files.deleteIfExists(file);
+    }
+    /**
+     * ファイルを削除します.
+     * @param filename 削除するファイル名
+     * @throws IOException {@link java.nio.file.Files#deleteIfExists(Path)}
+     * @throws NoFileNameException ファイル名がnullのとき
+     * @throws DirectoryTraversalException {@link #validTraverse(Path)}
+     * @throws NoSuchDirectoryException 
+     */
+    public static final void delete(final String dir, final String filename)
+            throws IOException, NoFileNameException, DirectoryTraversalException, NoSuchDirectoryException {
+        delete(getCanonicalPath(dir), filename);
     }
 }

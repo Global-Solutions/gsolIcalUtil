@@ -79,7 +79,7 @@ public class IacScheduleReaderLogic {
                     endDate.toDateTimeString(
                             conf.getIacSchEventDatePattern(), locale)))
                 events.add(map(entity, locale));
-        } catch (AccessSecurityException | ParseException e) {
+        } catch (final AccessSecurityException | ParseException e) {
             throw new ICalException(e);
         }
         return events;
