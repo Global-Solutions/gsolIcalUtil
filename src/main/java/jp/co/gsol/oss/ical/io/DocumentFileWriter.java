@@ -95,7 +95,7 @@ public class DocumentFileWriter {
         try (BufferedWriter bw = Files.newBufferedWriter(tempFile,
                 _charset, StandardOpenOption.CREATE)) {
             iCal.write(bw);
-        } catch (Exception e) {
+        } catch (final Exception e) {
             Files.deleteIfExists(tempFile);
             throw e;
         }
@@ -106,7 +106,7 @@ public class DocumentFileWriter {
      * @param path 確認するPath(絶対パスで指定)
      * @throws DirectoryTraversalException Pathの絶対パスと正規化パスが一致しないとき
      */
-    public static void validTraverse(final Path path)
+    public static final void validTraverse(final Path path)
             throws DirectoryTraversalException {
         if (!path.toAbsolutePath().equals(path.normalize()))
             throw new DirectoryTraversalException(

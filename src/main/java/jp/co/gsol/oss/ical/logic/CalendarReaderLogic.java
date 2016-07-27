@@ -58,7 +58,7 @@ public class CalendarReaderLogic {
                     iacScheduleReaderLogic.findAllByUserCd(userCd,
                             startDate, endDate,
                             getUser(userCd, refDate).getDefaultLocale()));
-        } catch (BizApiException e) {
+        } catch (final BizApiException e) {
             throw new ICalException(e);
         }
     }

@@ -70,7 +70,7 @@ public class CalendarConverter {
                 new XProperty("X-WR-TIMEZONE", iCalendar.timeZone().getID()));
 
         timeZoneMap = new HashMap<>();
-        List<VEvent> eventList = new ArrayList<>();
+        final List<VEvent> eventList = new ArrayList<>();
         for (ICalEvent iCalEvent : iCalendar.eventList()) {
             VEvent vEvent = convertEvent(iCalEvent);
             eventList.add(vEvent);
@@ -92,12 +92,12 @@ public class CalendarConverter {
      * @throws ICalException カレンダーの形式が不正な場合
      */
     public final void write(final Writer writer)
-            throws ICalException , IOException {
+            throws ICalException, IOException {
         try {
             //ical4jのバージョンが古い(i.0.3)とエラーになるのでCalendarOutputterのvalidatingはfalseに
             final CalendarOutputter outputter = new CalendarOutputter(false);
             outputter.output(ical4jCalendar, writer);
-        } catch (ValidationException e) {
+        } catch (final ValidationException e) {
             throw new ICalException(e);
         }
     }

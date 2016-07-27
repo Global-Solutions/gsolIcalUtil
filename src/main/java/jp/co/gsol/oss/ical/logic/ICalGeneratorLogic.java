@@ -81,7 +81,7 @@ public class ICalGeneratorLogic {
                                 userCd, refDate,
                                 startDate, endDate
                         )));
-        } catch (DirectoryTraversalException e) {
+        } catch (final DirectoryTraversalException e) {
             throw new ICalException(e);
         }
     }

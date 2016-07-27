@@ -82,7 +82,7 @@ public class ICalUserDataManipulatorLogic {
             throws ICalException {
         try {
             iCalGeneratorLogic.write(filename, userCd, time);
-        } catch (IOException | ICalException e) {
+        } catch (final IOException | ICalException e) {
             throw new ICalException(e);
         }
     }
@@ -148,7 +148,7 @@ public class ICalUserDataManipulatorLogic {
        try {
            new DocumentFileWriter(conf)
            .delete(fileName);
-        } catch (NoFileNameException | DirectoryTraversalException | NoSuchDirectoryException e) {
+        } catch (final NoFileNameException | DirectoryTraversalException | NoSuchDirectoryException e) {
             throw new ICalException(e);
         }
     }
