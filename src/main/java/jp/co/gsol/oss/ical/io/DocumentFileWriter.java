@@ -12,12 +12,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import jp.co.gsol.oss.ical.config.general.GsolIcalConfigCont;
 import jp.co.gsol.oss.ical.data.CalendarConverter;
 import jp.co.gsol.oss.ical.exception.DirectoryTraversalException;
 import jp.co.gsol.oss.ical.exception.ICalException;
 import jp.co.gsol.oss.ical.exception.NoFileNameException;
 import jp.co.gsol.oss.ical.exception.NoSuchDirectoryException;
-import jp.co.gsol.oss.ical.settings.ICalSetting;
 
 /**
  * Document directoryにファイルを書き込むクラスです.
@@ -36,17 +36,16 @@ public class DocumentFileWriter {
     private final Charset _charset;
 
     /**
-     * ICalSettingの設定を使って、dirディレクトリに書き込むオブジェクトを作成します.
-     * @param dir document directoryへのパス文字列
-     * @param autoMkdir directoryを自動作成するか
+     * 設定ファイルに従って、icsファイルを書き込むオブジェクトを作成します.
+     * @param conf ical設定
      * @throws NoSuchDirectoryException 指定のパスがディレクトリへの絶対パスではないとき
      * @throws IOException ディレクトリ作成時
      */
-    public DocumentFileWriter(final String dir, final boolean autoMkdir)
+    public DocumentFileWriter(final GsolIcalConfigCont conf)
             throws NoSuchDirectoryException, IOException {
-        this(dir,
-            ICalSetting.tempFilePrefix(), ICalSetting.tempFileSuffix(),
-            Charset.forName(ICalSetting.charset()), autoMkdir);
+        this(conf.getDocumentDirectry(),
+            conf.getTempFilePrefix(), conf.getTempFileSuffix(),
+            Charset.forName(conf.getCharset()), conf.isAutoMkdir());
     }
 
     /**
