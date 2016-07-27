@@ -5,9 +5,9 @@ import org.seasar.extension.jdbc.JdbcManager;
 
 import com.google.common.collect.ImmutableMap;
 
+import jp.co.gsol.oss.ical.config.general.GsolIcalConfigCont;
 import jp.co.gsol.oss.ical.exception.ICalException;
 import jp.co.gsol.oss.ical.model.ICalendar;
-import jp.co.gsol.oss.ical.settings.ICalSetting;
 import jp.co.intra_mart.foundation.exception.BizApiException;
 import jp.co.intra_mart.foundation.i18n.datetime.DateTime;
 import jp.co.intra_mart.foundation.master.user.UserManager;
@@ -22,13 +22,18 @@ public class CalendarReaderLogic {
 
     /** iACスケジュールにアクセスするlogic.*/
     private IacScheduleReaderLogic iacScheduleReaderLogic;
+    /** ical設定.*/
+    private final GsolIcalConfigCont conf;
 
     /**
      * JdbcManagerを指定します.
      * @param jdbcManager 指定するJdbcManager
+     * @param conf ical設定
      */
-    public CalendarReaderLogic(final JdbcManager jdbcManager) {
-        iacScheduleReaderLogic = new IacScheduleReaderLogic(jdbcManager);
+    public CalendarReaderLogic(final JdbcManager jdbcManager,
+            final GsolIcalConfigCont conf) {
+        iacScheduleReaderLogic = new IacScheduleReaderLogic(jdbcManager, conf);
+        this.conf = conf;
     }
 
     /**
@@ -46,9 +51,8 @@ public class CalendarReaderLogic {
             final DateTime startDate, final DateTime endDate)
                 throws ICalException {
         try {
-            return new ICalendar(
-                    ICalSetting.prodId(),
-                    MapFormat.format(ICalSetting.calendarNameTemplate(),
+            return new ICalendar(conf.getProdId(),
+                    MapFormat.format(conf.getCalendarNameTemplate(),
                             ImmutableMap.of("userCd", userCd)),
                     refDate.getTimeZone(),
                     iacScheduleReaderLogic.findAllByUserCd(userCd,

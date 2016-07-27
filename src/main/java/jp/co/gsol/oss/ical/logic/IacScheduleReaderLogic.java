@@ -13,13 +13,13 @@ import org.openide.util.MapFormat;
 import org.seasar.extension.jdbc.JdbcManager;
 import org.seasar.util.lang.StringUtil;
 
+import jp.co.gsol.oss.ical.config.general.GsolIcalConfigCont;
 import jp.co.gsol.oss.ical.entity.IacSchEvent;
 import jp.co.gsol.oss.ical.entity.IacSchSchedule;
 import jp.co.gsol.oss.ical.exception.ICalException;
 import jp.co.gsol.oss.ical.model.ICalEvent;
 import jp.co.gsol.oss.ical.service.extended.ExtendedIacSchEventService;
 import jp.co.gsol.oss.ical.service.extended.ExtendedIacSchScheduleService;
-import jp.co.gsol.oss.ical.settings.ICalSetting;
 import jp.co.intra_mart.foundation.i18n.datetime.DateTime;
 import jp.co.intra_mart.foundation.security.exception.AccessSecurityException;
 import jp.co.intra_mart.foundation.security.message.MessageManager;
@@ -36,17 +36,22 @@ public class IacScheduleReaderLogic {
     /** iac_sch_event テーブルservice.*/
     private ExtendedIacSchEventService extendedIacSchEventService;
 
+    /** ical設定.*/
+    private final GsolIcalConfigCont conf;
+
     /**
      * JdbcManagerを指定する.
      * @param jdbcMan 指定するJdbcManager
      */
-    public IacScheduleReaderLogic(final JdbcManager jdbcMan) {
+    public IacScheduleReaderLogic(final JdbcManager jdbcMan,
+            final GsolIcalConfigCont conf) {
         extendedIacSchScheduleService  = new ExtendedIacSchScheduleService() {
             { this.jdbcManager = jdbcMan; }
         };
         extendedIacSchEventService = new ExtendedIacSchEventService() {
             { this.jdbcManager = jdbcMan; }
         };
+        this.conf = conf;
     }
 
     /**
@@ -70,9 +75,9 @@ public class IacScheduleReaderLogic {
             for (IacSchEvent entity
                 : extendedIacSchEventService.findAllByUserCd(userCd,
                     startDate.toDateTimeString(
-                            ICalSetting.iacSchEventDatePattern(), locale),
+                            conf.getIacSchEventDatePattern(), locale),
                     endDate.toDateTimeString(
-                            ICalSetting.iacSchEventDatePattern(), locale)))
+                            conf.getIacSchEventDatePattern(), locale)))
                 events.add(map(entity, locale));
         } catch (AccessSecurityException | ParseException e) {
             throw new ICalException(e);
@@ -124,9 +129,9 @@ public class IacScheduleReaderLogic {
                 .id(entity.eventCd).wholeDay(true)
                 .summary(entity.title)
                 .startDate(DateTime.parse(tz, entity.startDate,
-                        ICalSetting.iacSchEventDatePattern()))
+                        conf.getIacSchEventDatePattern()))
                 .endDate(DateTime.parse(tz, entity.endDate,
-                        ICalSetting.iacSchEventDatePattern()))
+                        conf.getIacSchEventDatePattern()))
                 .description(compileDesc(entity.description,
                         entity.joinUserList, null,
                         BigDecimal.ONE.equals(entity.goingoutFlag),

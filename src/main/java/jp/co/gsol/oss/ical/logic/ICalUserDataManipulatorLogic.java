@@ -5,12 +5,13 @@ import java.io.IOException;
 import org.apache.commons.lang.RandomStringUtils;
 import org.seasar.extension.jdbc.JdbcManager;
 
+import jp.co.gsol.oss.ical.config.general.GsolIcalConfigCont;
 import jp.co.gsol.oss.ical.exception.DirectoryTraversalException;
 import jp.co.gsol.oss.ical.exception.ICalException;
 import jp.co.gsol.oss.ical.exception.NoFileNameException;
 import jp.co.gsol.oss.ical.exception.NoSuchDirectoryException;
 import jp.co.gsol.oss.ical.io.DocumentFileWriter;
-import jp.co.gsol.oss.ical.settings.ICalSetting;
+import jp.co.intra_mart.foundation.config.ConfigurationException;
 import jp.co.intra_mart.foundation.i18n.datetime.DateTime;
 
 /**
@@ -24,6 +25,8 @@ public class ICalUserDataManipulatorLogic {
     private IcsLogic icsLogic;
     /** iCalデータ生成. */
     private ICalGeneratorLogic iCalGeneratorLogic;
+    /** ical設定.*/
+    private final GsolIcalConfigCont conf;
 
     /**
      * JdbcManagerを指定する.
@@ -34,8 +37,9 @@ public class ICalUserDataManipulatorLogic {
             throws ICalException {
         icsLogic = new IcsLogic(jdbcMan);
         try {
+            conf = new GsolIcalConfigCont();
             iCalGeneratorLogic = new ICalGeneratorLogic(jdbcMan);
-        } catch (NoSuchDirectoryException | IOException e) {
+        } catch (final NoSuchDirectoryException | IOException | ConfigurationException e) {
             throw new ICalException(e);
         }
     }
@@ -141,7 +145,7 @@ public class ICalUserDataManipulatorLogic {
     public final void deleteFile(final String fileName)
             throws IOException, ICalException {
        try {
-           new DocumentFileWriter(ICalSetting.documentDirectory(), ICalSetting.autoMkdir())
+           new DocumentFileWriter(conf)
            .delete(fileName);
         } catch (NoFileNameException | DirectoryTraversalException | NoSuchDirectoryException e) {
             throw new ICalException(e);
@@ -153,8 +157,8 @@ public class ICalUserDataManipulatorLogic {
      * @return ユニークなファイル名
      */
     public final String createUniqueFileName() {
-        return createUniqueFileName(ICalSetting.icsFilenameLen(),
-                ICalSetting.icsFileExtension());
+        return createUniqueFileName(conf.getIcsFilenameLen(),
+                conf.getIcsFileExtension());
     }
 
     /**
@@ -176,8 +180,8 @@ public class ICalUserDataManipulatorLogic {
      * ファイルの一つ上の階層のURLを取得.
      * @return ファイルの一つ上の階層のURL
      */
-    public static String getParentURL() {
-        return ICalSetting.locationPath();
+    public String getParentURL() {
+        return conf.getLocationPath();
     }
 
     /**
@@ -185,7 +189,7 @@ public class ICalUserDataManipulatorLogic {
      * @param filename ファイル名
      * @return 外部からファイルにアクセスするURL
      */
-    public static String getFileAccesssURL(final String filename) {
+    public String getFileAccesssURL(final String filename) {
         return getParentURL() + "/" + filename;
     }
 }

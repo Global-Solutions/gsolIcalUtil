@@ -8,13 +8,14 @@ import java.util.stream.Stream;
 
 import org.seasar.extension.jdbc.JdbcManager;
 
+import jp.co.gsol.oss.ical.config.general.GsolIcalConfigCont;
 import jp.co.gsol.oss.ical.data.CalendarConverter;
 import jp.co.gsol.oss.ical.entity.IcalUserIcsRel;
 import jp.co.gsol.oss.ical.exception.DirectoryTraversalException;
 import jp.co.gsol.oss.ical.exception.ICalException;
 import jp.co.gsol.oss.ical.exception.NoSuchDirectoryException;
 import jp.co.gsol.oss.ical.io.DocumentFileWriter;
-import jp.co.gsol.oss.ical.settings.ICalSetting;
+import jp.co.intra_mart.foundation.config.ConfigurationException;
 import jp.co.intra_mart.foundation.i18n.datetime.DateTime;
 
 /**
@@ -29,30 +30,33 @@ public class ICalGeneratorLogic {
     private final CalendarReaderLogic calendarReaderLogic;
     /** ics関連操作.*/
     private final IcsLogic icsLogic;
+    /** ical設定.*/
+    private final GsolIcalConfigCont conf;
 
     /**
-     * ICalSettingの設定を使って、icsファイルを書き込むオブジェクトを作成します.
+     * 設定ファイルに従って、icsファイルを書き込むオブジェクトを作成します.
      * @param jdbcMan 使用するJdbcManager
      * @throws NoSuchDirectoryException {@link DocumentFileWriter#DocumentFileWriter(String)}
      * @throws IOException 
+     * @throws ConfigurationException 
      */
     public ICalGeneratorLogic(final JdbcManager jdbcMan)
-            throws NoSuchDirectoryException, IOException {
-        this(ICalSetting.documentDirectory(), ICalSetting.autoMkdir(), jdbcMan);
+            throws NoSuchDirectoryException, IOException, ConfigurationException {
+        this(new GsolIcalConfigCont(), jdbcMan);
     }
     /**
-     * dir directoryにicsファイルを書き込むオブジェクトを作成します.
-     * @param dir 指定するdirectoryへのパス文字列
-     * @param autoMkdir directoryがない時に、作成するか
+     * 設定に従って、icsファイルを書き込むオブジェクトを作成します.
+     * @param conf ical設定
      * @param jdbcMan 使用するJdbcManager
      * @throws NoSuchDirectoryException {@link DocumentFileWriter#DocumentFileWriter(String)}
      * @throws IOException 
      */
-    public ICalGeneratorLogic(final String dir, final boolean autoMkdir, final JdbcManager jdbcMan)
+    public ICalGeneratorLogic(final GsolIcalConfigCont conf, final JdbcManager jdbcMan)
             throws NoSuchDirectoryException, IOException {
-        writer = new DocumentFileWriter(dir, autoMkdir);
-        calendarReaderLogic = new CalendarReaderLogic(jdbcMan);
+        writer = new DocumentFileWriter(conf);
+        calendarReaderLogic = new CalendarReaderLogic(jdbcMan, conf);
         icsLogic = new IcsLogic(jdbcMan);
+        this.conf = conf;
     }
     /**
      * icsファイル更新(指定期間のスケジュールを出力).
@@ -95,8 +99,8 @@ public class ICalGeneratorLogic {
             final String userCd, final DateTime refDate)
             throws IOException, ICalException {
         write(filename, userCd, refDate,
-                refDate.plusMonths(ICalSetting.icsStartMonth()).withTime(0, 0),
-                refDate.plusMonths(ICalSetting.icsEndMonth()).withTime(0, 0));
+                refDate.plusMonths(conf.getIcsStartMonth()).withTime(0, 0),
+                refDate.plusMonths(conf.getIcsEndMonth()).withTime(0, 0));
     }
     /**
      * icsファイルをまとめて更新 (設定ファイルで指定された期間のスケジュールを出力).
@@ -189,6 +193,6 @@ public class ICalGeneratorLogic {
     public final int writeBatchUpdatedSchedules(
             final Date lastUpdateDate, final DateTime refDate)
             throws IOException, ICalException {
-        return writeBatchUpdatedSchedules(lastUpdateDate, refDate, ICalSetting.autoRecovery());
+        return writeBatchUpdatedSchedules(lastUpdateDate, refDate, conf.isAutoRecoveryFile());
     }
 }
