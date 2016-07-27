@@ -37,8 +37,8 @@ public class ICalGeneratorLogic {
      * 設定ファイルに従って、icsファイルを書き込むオブジェクトを作成します.
      * @param jdbcMan 使用するJdbcManager
      * @throws NoSuchDirectoryException {@link DocumentFileWriter#DocumentFileWriter(String)}
-     * @throws IOException 
-     * @throws ConfigurationException 
+     * @throws IOException {@link DocumentFileWriter#DocumentFileWriter(GsolIcalConfigCont)}
+     * @throws ConfigurationException {@link GsolIcalConfigCont#GsolIcalConfigCont()}
      */
     public ICalGeneratorLogic(final JdbcManager jdbcMan)
             throws NoSuchDirectoryException, IOException, ConfigurationException {
@@ -49,7 +49,7 @@ public class ICalGeneratorLogic {
      * @param conf ical設定
      * @param jdbcMan 使用するJdbcManager
      * @throws NoSuchDirectoryException {@link DocumentFileWriter#DocumentFileWriter(String)}
-     * @throws IOException 
+     * @throws IOException {@link DocumentFileWriter#DocumentFileWriter(GsolIcalConfigCont)}
      */
     public ICalGeneratorLogic(final GsolIcalConfigCont conf, final JdbcManager jdbcMan)
             throws NoSuchDirectoryException, IOException {
