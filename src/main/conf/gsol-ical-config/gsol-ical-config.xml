@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gsol-ical-config
+    xmlns="http://global-solutions.co.jp/ical/config/general"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://global-solutions.co.jp/ical/config/general ../schema/gsol-ical-config.xsd ">
+
+    <document-directry>\absolute\path\to\your\webapp\ical\ics</document-directry>
+    <location-path>http://example.com/ical/ics</location-path>
+    <prod-id>"-//Global Solutions Co., Ltd.//iAC Calendar/EN"</prod-id>
+    <calendar-name-template>{userCd} @ iAC Calendar</calendar-name-template>
+    <auto-mkdir>true</auto-mkdir>
+    <auto-recovery-file>false</auto-recovery-file>
+    <ics-start-month>-1</ics-start-month>
+    <ics-end-month>13</ics-end-month>
+</gsol-ical-config>
