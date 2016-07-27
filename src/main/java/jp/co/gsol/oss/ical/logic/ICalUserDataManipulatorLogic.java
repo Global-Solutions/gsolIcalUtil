@@ -1,6 +1,7 @@
 package jp.co.gsol.oss.ical.logic;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.seasar.extension.jdbc.JdbcManager;
@@ -155,8 +156,9 @@ public class ICalUserDataManipulatorLogic {
     /**
      * ランダム英数字からなるユニークなファイル名を生成.
      * @return ユニークなファイル名
+     * @throws ICalException 
      */
-    public final String createUniqueFileName() {
+    public final String createUniqueFileName() throws ICalException {
         return createUniqueFileName(conf.getIcsFilenameLen(),
                 conf.getIcsFileExtension());
     }
@@ -166,14 +168,23 @@ public class ICalUserDataManipulatorLogic {
      * @param len ファイル名の長さ.
      * @param extension ファイルの拡張子
      * @return ユニークなファイル名
+     * @throws ICalException 
      */
     public final String createUniqueFileName(
-            final int len, final String extension) {
-        String fileName;
-        do {
-            fileName = RandomStringUtils.randomAlphanumeric(len) + extension;
-        } while(icsLogic.existsFilename(fileName));
-        return fileName;
+            final int len, final String extension) throws ICalException {
+        try {
+            String fileName = null;
+            final List<String> files = new DocumentFileWriter(conf).ls();
+            int i = 0;
+            do {
+                if (i++ > 100)
+                    throw new ICalException("cannot create unique filename, because of conflict filename " + fileName);
+                fileName = RandomStringUtils.randomAlphanumeric(len) + extension;
+            } while (files.contains(fileName) || icsLogic.existsFilename(fileName));
+            return fileName;
+        } catch (final IOException | NoSuchDirectoryException e) {
+            throw new ICalException(e);
+        }
     }
 
     /**

@@ -15,8 +15,9 @@
     <element name="gsol-ical-config">
         <complexType>
             <all>
-                <element name="document-directry" minOccurs="1" maxOccurs="1" type="string"/>
-                <element name="location-path" minOccurs="1" maxOccurs="1" type="string"/>
+                <element name="document-directry" minOccurs="0" maxOccurs="1" type="string"/>
+                <element name="webserver-root-directry" minOccurs="0" maxOccurs="1" type="string"/>
+                <element name="location-path" minOccurs="0" maxOccurs="1" type="string"/>
                 <element name="prod-id" minOccurs="1" maxOccurs="1" type="string"/>
                 <element name="calendar-name-template" minOccurs="1" maxOccurs="1" type="string"/>
                 <element name="auto-mkdir" type="boolean" minOccurs="0" maxOccurs="1" />

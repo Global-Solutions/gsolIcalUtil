@@ -7,6 +7,7 @@ import java.util.Properties;
 import org.seasar.framework.util.ResourceUtil;
 import org.seasar.util.lang.StringUtil;
 
+import jp.co.intra_mart.foundation.BaseUrl;
 import jp.co.intra_mart.foundation.config.ConfigurationException;
 import jp.co.intra_mart.foundation.config.ConfigurationLoader;
 
@@ -18,11 +19,17 @@ public class GsolIcalConfigCont {
         conf = ConfigurationLoader.load(GsolIcalConfig.class);
     }
 
+    public final String getWebserverRootDirectry() {
+        return conf.getWebserverRootDirectry();
+    }
     public final String getDocumentDirectry() {
-        return conf.getDocumentDirectry();
+        return or(conf.getDocumentDirectry(),
+                or(getWebserverRootDirectry(), "/tmp")
+                + props.getProperty("ics_dir_path"));
     }
     public final String getLocationPath() {
-        return conf.getLocationPath();
+        return or(conf.getLocationPath(),
+                BaseUrl.get() + props.getProperty("ics_dir_path"));
     }
     public final String getProdId() {
         return conf.getProdId();
