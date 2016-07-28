@@ -179,7 +179,7 @@ public class ICalUserDataManipulatorLogic {
             do {
                 if (i++ > 100)
                     throw new ICalException("cannot create unique filename, because of conflict filename " + fileName);
-                fileName = (RandomStringUtils.randomAlphanumeric(len)
+                fileName = (RandomStringUtils.randomAlphanumeric(len - extension.length())
                         + extension).toLowerCase();
             } while (files.contains(fileName) || icsLogic.existsFilename(fileName));
             return fileName;
