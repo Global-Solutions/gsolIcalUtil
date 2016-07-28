@@ -24,7 +24,7 @@
                 <element name="auto-recovery-file" type="boolean" minOccurs="0" maxOccurs="1"/>
                 <element name="ics-start-month" type="tns:negative-integer" minOccurs="0" maxOccurs="1"/>
                 <element name="ics-end-month" type="tns:positive-integer" minOccurs="0" maxOccurs="1"/>
-                <element name="ics-filename-len" type="tns:positive-integer" minOccurs="0" maxOccurs="1"/>
+                <element name="ics-filename-len" type="tns:filename-len" minOccurs="0" maxOccurs="1"/>
                 <element name="ics-file-extension" type="string" minOccurs="0" maxOccurs="1"/>
                 <element name="temp-file-prefix" type="string" minOccurs="0" maxOccurs="1"/>
                 <element name="temp-file-suffix" type="string" minOccurs="0" maxOccurs="1"/>
@@ -41,6 +41,12 @@
     <simpleType name="negative-integer">
         <restriction base="integer">
             <maxInclusive value="0"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="filename-len">
+        <restriction base="integer">
+            <minInclusive value="10"/>
+            <maxInclusive value="100"/>
         </restriction>
     </simpleType>
 </schema>
