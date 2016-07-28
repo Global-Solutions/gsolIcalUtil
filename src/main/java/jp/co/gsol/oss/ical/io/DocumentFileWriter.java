@@ -68,7 +68,7 @@ public class DocumentFileWriter {
             d = getCanonicalPath(dir);
         } catch (final NoSuchDirectoryException e) {
             if (autoMkdir)
-                d = Files.createDirectory(d);
+                d = Files.createDirectories(d);
             else
                 throw e;
         }
