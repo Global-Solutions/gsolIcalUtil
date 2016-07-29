@@ -8,24 +8,24 @@
   <description>${module.description}</description>
   <dependencies>
     <dependency>
-    	<module-id>jp.co.intra_mart.vendor.ical4j</module-id>
-    	<verified-version min="1.0.3">1.0.3</verified-version>
+        <module-id>jp.co.intra_mart.vendor.ical4j</module-id>
+        <verified-version min="1.0.3">1.0.3</verified-version>
     </dependency>
     <dependency>
-    	<module-id>jp.co.intra_mart.vendor.guava</module-id>
-    	<verified-version min="18.0.0">18.0.0</verified-version>
+        <module-id>jp.co.intra_mart.vendor.guava</module-id>
+        <verified-version min="18.0.0">18.0.0</verified-version>
     </dependency>
     <dependency>
-    	<module-id>jp.co.intra_mart.vendor.s2util</module-id>
-    	<verified-version min="0.0.1">0.0.1</verified-version>
+        <module-id>jp.co.intra_mart.vendor.s2util</module-id>
+        <verified-version min="0.0.1">0.0.1</verified-version>
     </dependency>
     <dependency>
-    	<module-id>jp.co.intra_mart.vendor.seasar2</module-id>
-    	<verified-version min="2.4.48">2.4.48</verified-version>
+        <module-id>jp.co.intra_mart.vendor.seasar2</module-id>
+        <verified-version min="2.4.48">2.4.48</verified-version>
     </dependency>
     <dependency>
-    	<module-id>jp.co.intra_mart.product.collaboration.iac_schedule</module-id>
-    	<verified-version min="8.0.12">8.0.12</verified-version>
+        <module-id>jp.co.intra_mart.product.collaboration.iac_schedule</module-id>
+        <verified-version min="8.0.12">8.0.12</verified-version>
     </dependency>
   </dependencies>
 </module>
