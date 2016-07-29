@@ -24,9 +24,7 @@
     	<verified-version min="2.4.48">2.4.48</verified-version>
     </dependency>
     <dependency>
-    	<module-id>
-    		jp.co.intra_mart.product.collaboration.iac_schedule
-    	</module-id>
+    	<module-id>jp.co.intra_mart.product.collaboration.iac_schedule</module-id>
     	<verified-version min="8.0.12">8.0.12</verified-version>
     </dependency>
   </dependencies>
