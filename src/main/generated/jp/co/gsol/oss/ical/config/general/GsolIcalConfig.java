@@ -6,13 +6,14 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>anonymous complex type‚ÌJavaƒNƒ‰ƒXB
+ * <p>anonymous complex typeã®Javaã‚¯ãƒ©ã‚¹ã€‚
  * 
- * <p>Ÿ‚ÌƒXƒL[ƒ}Eƒtƒ‰ƒOƒƒ“ƒg‚ÍA‚±‚ÌƒNƒ‰ƒX“à‚ÉŠÜ‚Ü‚ê‚é—\Šú‚³‚ê‚éƒRƒ“ƒeƒ“ƒc‚ğw’è‚µ‚Ü‚·B
+ * <p>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒãƒ»ãƒ•ãƒ©ã‚°ãƒ¡ãƒ³ãƒˆã¯ã€ã“ã®ã‚¯ãƒ©ã‚¹å†…ã«å«ã¾ã‚Œã‚‹äºˆæœŸã•ã‚Œã‚‹ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã‚’æŒ‡å®šã—ã¾ã™ã€‚
  * 
  * <pre>
  * &lt;complexType>
@@ -28,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="auto-recovery-file" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="ics-start-month" type="{http://global-solutions.co.jp/ical/config/general}negative-integer" minOccurs="0"/>
  *         &lt;element name="ics-end-month" type="{http://global-solutions.co.jp/ical/config/general}positive-integer" minOccurs="0"/>
- *         &lt;element name="ics-filename-len" type="{http://global-solutions.co.jp/ical/config/general}positive-integer" minOccurs="0"/>
+ *         &lt;element name="ics-filename-len" type="{http://global-solutions.co.jp/ical/config/general}filename-len" minOccurs="0"/>
  *         &lt;element name="ics-file-extension" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="temp-file-prefix" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="temp-file-suffix" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -68,7 +69,8 @@ public class GsolIcalConfig {
     @XmlElement(name = "ics-end-month", namespace = "http://global-solutions.co.jp/ical/config/general")
     protected BigInteger icsEndMonth;
     @XmlElement(name = "ics-filename-len", namespace = "http://global-solutions.co.jp/ical/config/general")
-    protected BigInteger icsFilenameLen;
+    @XmlSchemaType(name = "integer")
+    protected Integer icsFilenameLen;
     @XmlElement(name = "ics-file-extension", namespace = "http://global-solutions.co.jp/ical/config/general")
     protected String icsFileExtension;
     @XmlElement(name = "temp-file-prefix", namespace = "http://global-solutions.co.jp/ical/config/general")
@@ -81,7 +83,7 @@ public class GsolIcalConfig {
     protected String iacSchEventDatePattern;
 
     /**
-     * documentDirectryƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚µ‚Ü‚·B
+     * documentDirectryãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
      * 
      * @return
      *     possible object is
@@ -93,7 +95,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * documentDirectryƒvƒƒpƒeƒB‚Ì’l‚ğİ’è‚µ‚Ü‚·B
+     * documentDirectryãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’è¨­å®šã—ã¾ã™ã€‚
      * 
      * @param value
      *     allowed object is
@@ -105,7 +107,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * webserverRootDirectryƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚µ‚Ü‚·B
+     * webserverRootDirectryãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
      * 
      * @return
      *     possible object is
@@ -117,7 +119,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * webserverRootDirectryƒvƒƒpƒeƒB‚Ì’l‚ğİ’è‚µ‚Ü‚·B
+     * webserverRootDirectryãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’è¨­å®šã—ã¾ã™ã€‚
      * 
      * @param value
      *     allowed object is
@@ -129,7 +131,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * locationPathƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚µ‚Ü‚·B
+     * locationPathãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
      * 
      * @return
      *     possible object is
@@ -141,7 +143,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * locationPathƒvƒƒpƒeƒB‚Ì’l‚ğİ’è‚µ‚Ü‚·B
+     * locationPathãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’è¨­å®šã—ã¾ã™ã€‚
      * 
      * @param value
      *     allowed object is
@@ -153,7 +155,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * prodIdƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚µ‚Ü‚·B
+     * prodIdãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
      * 
      * @return
      *     possible object is
@@ -165,7 +167,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * prodIdƒvƒƒpƒeƒB‚Ì’l‚ğİ’è‚µ‚Ü‚·B
+     * prodIdãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’è¨­å®šã—ã¾ã™ã€‚
      * 
      * @param value
      *     allowed object is
@@ -177,7 +179,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * calendarNameTemplateƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚µ‚Ü‚·B
+     * calendarNameTemplateãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
      * 
      * @return
      *     possible object is
@@ -189,7 +191,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * calendarNameTemplateƒvƒƒpƒeƒB‚Ì’l‚ğİ’è‚µ‚Ü‚·B
+     * calendarNameTemplateãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’è¨­å®šã—ã¾ã™ã€‚
      * 
      * @param value
      *     allowed object is
@@ -201,7 +203,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * autoMkdirƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚µ‚Ü‚·B
+     * autoMkdirãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
      * 
      * @return
      *     possible object is
@@ -213,7 +215,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * autoMkdirƒvƒƒpƒeƒB‚Ì’l‚ğİ’è‚µ‚Ü‚·B
+     * autoMkdirãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’è¨­å®šã—ã¾ã™ã€‚
      * 
      * @param value
      *     allowed object is
@@ -225,7 +227,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * autoRecoveryFileƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚µ‚Ü‚·B
+     * autoRecoveryFileãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
      * 
      * @return
      *     possible object is
@@ -237,7 +239,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * autoRecoveryFileƒvƒƒpƒeƒB‚Ì’l‚ğİ’è‚µ‚Ü‚·B
+     * autoRecoveryFileãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’è¨­å®šã—ã¾ã™ã€‚
      * 
      * @param value
      *     allowed object is
@@ -249,7 +251,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * icsStartMonthƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚µ‚Ü‚·B
+     * icsStartMonthãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
      * 
      * @return
      *     possible object is
@@ -261,7 +263,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * icsStartMonthƒvƒƒpƒeƒB‚Ì’l‚ğİ’è‚µ‚Ü‚·B
+     * icsStartMonthãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’è¨­å®šã—ã¾ã™ã€‚
      * 
      * @param value
      *     allowed object is
@@ -273,7 +275,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * icsEndMonthƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚µ‚Ü‚·B
+     * icsEndMonthãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
      * 
      * @return
      *     possible object is
@@ -285,7 +287,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * icsEndMonthƒvƒƒpƒeƒB‚Ì’l‚ğİ’è‚µ‚Ü‚·B
+     * icsEndMonthãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’è¨­å®šã—ã¾ã™ã€‚
      * 
      * @param value
      *     allowed object is
@@ -297,31 +299,31 @@ public class GsolIcalConfig {
     }
 
     /**
-     * icsFilenameLenƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚µ‚Ü‚·B
+     * icsFilenameLenãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
-    public BigInteger getIcsFilenameLen() {
+    public Integer getIcsFilenameLen() {
         return icsFilenameLen;
     }
 
     /**
-     * icsFilenameLenƒvƒƒpƒeƒB‚Ì’l‚ğİ’è‚µ‚Ü‚·B
+     * icsFilenameLenãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’è¨­å®šã—ã¾ã™ã€‚
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
-    public void setIcsFilenameLen(BigInteger value) {
+    public void setIcsFilenameLen(Integer value) {
         this.icsFilenameLen = value;
     }
 
     /**
-     * icsFileExtensionƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚µ‚Ü‚·B
+     * icsFileExtensionãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
      * 
      * @return
      *     possible object is
@@ -333,7 +335,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * icsFileExtensionƒvƒƒpƒeƒB‚Ì’l‚ğİ’è‚µ‚Ü‚·B
+     * icsFileExtensionãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’è¨­å®šã—ã¾ã™ã€‚
      * 
      * @param value
      *     allowed object is
@@ -345,7 +347,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * tempFilePrefixƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚µ‚Ü‚·B
+     * tempFilePrefixãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
      * 
      * @return
      *     possible object is
@@ -357,7 +359,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * tempFilePrefixƒvƒƒpƒeƒB‚Ì’l‚ğİ’è‚µ‚Ü‚·B
+     * tempFilePrefixãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’è¨­å®šã—ã¾ã™ã€‚
      * 
      * @param value
      *     allowed object is
@@ -369,7 +371,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * tempFileSuffixƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚µ‚Ü‚·B
+     * tempFileSuffixãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
      * 
      * @return
      *     possible object is
@@ -381,7 +383,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * tempFileSuffixƒvƒƒpƒeƒB‚Ì’l‚ğİ’è‚µ‚Ü‚·B
+     * tempFileSuffixãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’è¨­å®šã—ã¾ã™ã€‚
      * 
      * @param value
      *     allowed object is
@@ -393,7 +395,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * charsetƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚µ‚Ü‚·B
+     * charsetãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
      * 
      * @return
      *     possible object is
@@ -405,7 +407,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * charsetƒvƒƒpƒeƒB‚Ì’l‚ğİ’è‚µ‚Ü‚·B
+     * charsetãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’è¨­å®šã—ã¾ã™ã€‚
      * 
      * @param value
      *     allowed object is
@@ -417,7 +419,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * iacSchEventDatePatternƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚µ‚Ü‚·B
+     * iacSchEventDatePatternãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
      * 
      * @return
      *     possible object is
@@ -429,7 +431,7 @@ public class GsolIcalConfig {
     }
 
     /**
-     * iacSchEventDatePatternƒvƒƒpƒeƒB‚Ì’l‚ğİ’è‚µ‚Ü‚·B
+     * iacSchEventDatePatternãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’è¨­å®šã—ã¾ã™ã€‚
      * 
      * @param value
      *     allowed object is
