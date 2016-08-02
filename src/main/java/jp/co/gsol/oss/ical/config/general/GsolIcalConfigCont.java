@@ -1,7 +1,6 @@
 package jp.co.gsol.oss.ical.config.general;
 
 
-import java.math.BigInteger;
 import java.util.Properties;
 
 import org.seasar.framework.util.ResourceUtil;
@@ -84,10 +83,10 @@ public class GsolIcalConfigCont {
     private final int or(final BigInteger val, final String def) {
         return or(val, Integer.valueOf(def));
     }
-    private final int or(final BigInteger val, final int def) {
+    private final <T extends Number> int or(final T val, final int def) {
         return val != null ? val.intValue(): def;
     }
-    private final String or(final String val, final String def) {
+    private String or(final String val, final String def) {
         return !StringUtil.isEmpty(val) ? val: def;
     }
 }
