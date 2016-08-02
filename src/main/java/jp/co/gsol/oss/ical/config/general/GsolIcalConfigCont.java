@@ -1,7 +1,6 @@
 package jp.co.gsol.oss.ical.config.general;
 
 
-import java.math.BigInteger;
 import java.util.Properties;
 
 import org.seasar.framework.util.ResourceUtil;
@@ -75,19 +74,19 @@ public class GsolIcalConfigCont {
         return or(conf.getIacSchEventDatePattern(),
                 props.getProperty("default_iac_sch_event_date_pattern"));
     }
-    private final boolean or(final Boolean val, final String def) {
+    private boolean or(final Boolean val, final String def) {
         return or(val, Boolean.valueOf(def));
     }
-    private final boolean or(final Boolean val, final boolean def) {
+    private boolean or(final Boolean val, final boolean def) {
         return val != null ? val: def;
     }
-    private final int or(final BigInteger val, final String def) {
+    private <T extends Number> int or(final T val, final String def) {
         return or(val, Integer.valueOf(def));
     }
-    private final int or(final BigInteger val, final int def) {
+    private <T extends Number> int or(final T val, final int def) {
         return val != null ? val.intValue(): def;
     }
-    private final String or(final String val, final String def) {
+    private String or(final String val, final String def) {
         return !StringUtil.isEmpty(val) ? val: def;
     }
 }
