@@ -43,7 +43,7 @@ public class DocumentFileWriter {
      */
     public DocumentFileWriter(final GsolIcalConfigCont conf)
             throws NoSuchDirectoryException, IOException {
-        this(conf.getDocumentDirectry(),
+        this(conf.getDocumentDirectory(),
             conf.getTempFilePrefix(), conf.getTempFileSuffix(),
             Charset.forName(conf.getCharset()), conf.isAutoMkdir());
     }
