@@ -4,7 +4,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://global-solutions.co.jp/ical/config/general ../schema/gsol-ical-config.xsd ">
 
-    <webserver-root-directry>\absolute\path\to\your\webserver/document/root</webserver-root-directry>
+    <webserver-root-directory>/absolute/path/to/your/webserver/document/root</webserver-root-directory>
     <prod-id>"-//Global Solutions Co., Ltd.//iAC Calendar/EN"</prod-id>
     <calendar-name-template>{userCd} @ iAC Calendar</calendar-name-template>
     <auto-mkdir>true</auto-mkdir>

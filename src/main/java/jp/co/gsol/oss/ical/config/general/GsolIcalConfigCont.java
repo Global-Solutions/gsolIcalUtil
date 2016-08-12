@@ -18,12 +18,12 @@ public class GsolIcalConfigCont {
         conf = ConfigurationLoader.load(GsolIcalConfig.class);
     }
 
-    public final String getWebserverRootDirectry() {
-        return conf.getWebserverRootDirectry();
+    public final String getWebserverRootDirectory() {
+        return conf.getWebserverRootDirectory();
     }
-    public final String getDocumentDirectry() {
-        return or(conf.getDocumentDirectry(),
-                or(getWebserverRootDirectry(), "/tmp")
+    public final String getDocumentDirectory() {
+        return or(conf.getDocumentDirectory(),
+                or(getWebserverRootDirectory(), "/tmp")
                 + props.getProperty("ics_dir_path"));
     }
     public final String getLocationPath() {

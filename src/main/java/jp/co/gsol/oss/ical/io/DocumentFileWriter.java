@@ -43,7 +43,7 @@ public class DocumentFileWriter {
      */
     public DocumentFileWriter(final GsolIcalConfigCont conf)
             throws NoSuchDirectoryException, IOException {
-        this(conf.getDocumentDirectry(),
+        this(conf.getDocumentDirectory(),
             conf.getTempFilePrefix(), conf.getTempFileSuffix(),
             Charset.forName(conf.getCharset()), conf.isAutoMkdir());
     }
@@ -80,7 +80,7 @@ public class DocumentFileWriter {
     private static final Path getCanonicalPath(final Path dir)
             throws NoSuchDirectoryException {
         if (!dir.isAbsolute())
-            throw new IllegalArgumentException(dir + " is not abusolute path");
+            throw new NoSuchDirectoryException(dir + " is not abusolute path");
         if (!Files.isDirectory(dir))
             throw new NoSuchDirectoryException(dir + " not found");
         return dir;

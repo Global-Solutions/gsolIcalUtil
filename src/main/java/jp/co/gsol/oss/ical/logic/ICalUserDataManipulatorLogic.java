@@ -99,9 +99,10 @@ public class ICalUserDataManipulatorLogic {
     public final String deleteAndCreateUserData(final String userCd,
             final DateTime time)
             throws IOException, ICalException {
-        final String filename = getFileName(userCd);
-        if (filename != null) deleteFile(filename);
-        return createUserData(userCd, time);
+        final String oldFilename = getFileName(userCd);
+        final String newFilename = createUserData(userCd, time);
+        if (oldFilename != null) deleteFile(oldFilename);
+        return newFilename;
     }
 
     /**
