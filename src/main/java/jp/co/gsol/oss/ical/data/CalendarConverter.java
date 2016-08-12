@@ -123,9 +123,7 @@ public class CalendarConverter {
                     iCalEvent.endDate().getDate(),
                     iCalEvent.endDate().getTimeZone());
             dtStart = new DtStart(start);
-            dtStart.getParameters().add(new TzId(startTZ.getID()));
             dtEnd = new DtEnd(end);
-            dtEnd.getParameters().add(new TzId(endTZ.getID()));
         } else {
             // スケジュールの場合
             final DateTime start =
