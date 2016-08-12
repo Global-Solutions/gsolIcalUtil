@@ -80,7 +80,7 @@ public class DocumentFileWriter {
     private static final Path getCanonicalPath(final Path dir)
             throws NoSuchDirectoryException {
         if (!dir.isAbsolute())
-            throw new IllegalArgumentException(dir + " is not abusolute path");
+            throw new NoSuchDirectoryException(dir + " is not abusolute path");
         if (!Files.isDirectory(dir))
             throw new NoSuchDirectoryException(dir + " not found");
         return dir;
