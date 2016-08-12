@@ -20,8 +20,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;all>
- *         &lt;element name="document-directry" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="webserver-root-directry" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="document-directory" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="webserver-root-directory" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="location-path" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="prod-id" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="calendar-name-template" type="{http://www.w3.org/2001/XMLSchema}string"/>
@@ -50,10 +50,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "gsol-ical-config", namespace = "http://global-solutions.co.jp/ical/config/general")
 public class GsolIcalConfig {
 
-    @XmlElement(name = "document-directry", namespace = "http://global-solutions.co.jp/ical/config/general")
-    protected String documentDirectry;
-    @XmlElement(name = "webserver-root-directry", namespace = "http://global-solutions.co.jp/ical/config/general")
-    protected String webserverRootDirectry;
+    @XmlElement(name = "document-directory", namespace = "http://global-solutions.co.jp/ical/config/general")
+    protected String documentDirectory;
+    @XmlElement(name = "webserver-root-directory", namespace = "http://global-solutions.co.jp/ical/config/general")
+    protected String webserverRootDirectory;
     @XmlElement(name = "location-path", namespace = "http://global-solutions.co.jp/ical/config/general")
     protected String locationPath;
     @XmlElement(name = "prod-id", namespace = "http://global-solutions.co.jp/ical/config/general", required = true)
@@ -83,51 +83,51 @@ public class GsolIcalConfig {
     protected String iacSchEventDatePattern;
 
     /**
-     * documentDirectryプロパティの値を取得します。
+     * documentDirectoryプロパティの値を取得します。
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getDocumentDirectry() {
-        return documentDirectry;
+    public String getDocumentDirectory() {
+        return documentDirectory;
     }
 
     /**
-     * documentDirectryプロパティの値を設定します。
+     * documentDirectoryプロパティの値を設定します。
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setDocumentDirectry(String value) {
-        this.documentDirectry = value;
+    public void setDocumentDirectory(String value) {
+        this.documentDirectory = value;
     }
 
     /**
-     * webserverRootDirectryプロパティの値を取得します。
+     * webserverRootDirectoryプロパティの値を取得します。
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getWebserverRootDirectry() {
-        return webserverRootDirectry;
+    public String getWebserverRootDirectory() {
+        return webserverRootDirectory;
     }
 
     /**
-     * webserverRootDirectryプロパティの値を設定します。
+     * webserverRootDirectoryプロパティの値を設定します。
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setWebserverRootDirectry(String value) {
-        this.webserverRootDirectry = value;
+    public void setWebserverRootDirectory(String value) {
+        this.webserverRootDirectory = value;
     }
 
     /**
