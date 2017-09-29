@@ -3,11 +3,12 @@ gsolIcalUtil
 
 ICalenddar utilities on intra-mart Accel Collaboration
 
-* Version 2016.7
+* Version 2016.7 (1.1.0)
 
 ## 概要
-intra-mart Accel Collaboration(以下、iAC)のカレンダーを読み取って、icsファイルに出力します。
-付属のDDLをiACのDBに適用することで、更新されたスケジュールのみ抽出し、icsファイルを出力するバッチが作成できます。
+
+intra-mart Accel Collaboration(以下、iAC)のカレンダーを読み取って、icsファイルに出力します。  
+付属のDDLをiACのDBに適用することで、更新されたスケジュールのみ抽出し、icsファイルを出力するバッチが作成できます。  
 
 ## ファイル構成
 * doc : Javadoc
@@ -32,16 +33,23 @@ intra-mart Accel Collaboration(以下、iAC)のカレンダーを読み取って
 * build.xml : jar生成用ビルドファイル
 * build.properties : ライブラリパス設定ファイル
 * ChangeLog
+* ical-ddl-oracle.sql : oracle db用DDL (experimental)
 * ical-ddl.sql : postgres用DDL
 * LICENSE
 * README.md
 
 ## 動作環境
+
 * intra-mart Accel Collaboration 2013 Winter or later
-* postgres v9.2, v9.3, v9.4
+* postgres v9.2, v9.3, v9.4, v9.5
 * JavaSE 1.8
 
+### Experimental support
+
+* Oracle SE One 11.2.0.4.v3 (AWS RDS)
+
 ## インストール (jarで出力する場合)
+
 1. build.propertiesのINTREMART_HOME(webapp directoryのlib)とJAVAX_PERSISTENCE(javax.persistencdの実装を含んだjar)を設定し、jarをコンパイル
 2. gsol-ical-util.jarをプロジェクトのビルドパスに追加
 3. main/conf/message/gsol/ical/ical-message.propertiesをプロジェクトの同じpathに配置
@@ -51,6 +59,7 @@ intra-mart Accel Collaboration(以下、iAC)のカレンダーを読み取って
 7. jobとactionを作成。job schedulerの設定
 
 ## インストール (immで出力する場合)
+
 1. module assembllyを設定し、ビルドパスを通す
 2. ユーザモジュールとしてエクスポート
 3. エクスポートしたユーザモジュールをプロジェクトに依存性に追加
@@ -90,13 +99,20 @@ intra-mart Accel Collaboration(以下、iAC)のカレンダーを読み取って
 ```
 
 ## 著作権および特記事項
-このライブラリの著作権は、Global Solutionsが所有しています。
-利用者は、GPL version 3にて、本ライブラリを使用することができます。
-詳しくは、LICENSEを参照してください。
-intra-mart は株式会社 NTT データ イントラマートの登録商標です。
+
+このライブラリの著作権は、Global Solutionsが所有しています。  
+利用者は、GPL version 3にて、本ライブラリを使用することができます。  
+詳しくは、LICENSEを参照してください。  
+intra-mart は株式会社 NTT データ イントラマートの登録商標です。  
 
 ## THANKS
+
 * iCal4j
 
+## Contributors
+
+* @MasahitoShinoda
+
 ## 連絡先
+
 * github : https://github.com/Global-Solutions
