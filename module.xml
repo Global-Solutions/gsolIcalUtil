@@ -13,7 +13,7 @@
     </dependency>
     <dependency>
         <module-id>jp.co.intra_mart.vendor.guava</module-id>
-        <verified-version min="18.0.0">18.0.0</verified-version>
+        <verified-version min="17.0.0">17.0.0</verified-version>
     </dependency>
     <dependency>
         <module-id>jp.co.intra_mart.vendor.s2util</module-id>
@@ -21,11 +21,11 @@
     </dependency>
     <dependency>
         <module-id>jp.co.intra_mart.vendor.seasar2</module-id>
-        <verified-version min="2.4.48">2.4.48</verified-version>
+        <verified-version min="2.4.45">2.4.45</verified-version>
     </dependency>
     <dependency>
         <module-id>jp.co.intra_mart.product.collaboration.iac_schedule</module-id>
-        <verified-version min="8.0.12">8.0.12</verified-version>
+        <verified-version min="8.0.10">8.0.10</verified-version>
     </dependency>
   </dependencies>
 </module>
